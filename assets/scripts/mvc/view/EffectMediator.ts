@@ -37,9 +37,12 @@ export class EffectMediator extends Mediator {
                 this.effectComponent.SetMultipleSymbolPos = multipleSymbolInfo;
                 break;
             case "FIRE_BALL":
-                //第幾個輪子 第幾個位置要顯示
+                //第幾個輪子第幾個位置要顯示火球
                 const positions = notification.body;
-                this.effectComponent.playFireBall(positions);
+                //延遲一段時間再丟出火球
+                setTimeout(() => {
+                    this.effectComponent.playFireBall(positions);
+                }, 1500);
                 break;
             case "SET_BET_MULTIPLE":
                 this.effectComponent.SetBetMultiple = notification.body;
