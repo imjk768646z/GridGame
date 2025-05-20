@@ -368,13 +368,12 @@ export const SignalAction = {
         ],
         // 贏分
         "Win": [
-            [SignalType.UpdateCredit]
             // [SignalType.ShowFGCountText],
             // [SignalType.FGShowWinLineAll, SignalType.FGShowWinSymbolAll, SignalType.FGShowWinSymbolFrameAll, SignalType.TotalWinRunScoreFreeAccum],
             // [SignalType.HideSymbolFrame, SignalType.ShowRollingSymbolAll, SignalType.ClearSymbol, SignalType.ReSetOtherMask],
         ],
         "AllComplete": [
-            [SignalType.CloseEliminateScore, SignalType.CloseFGShowWin, SignalType.CloseFeature, SignalType.CloseFGRound, SignalType.CloseRoundText, SignalType.CloseFGBackground, SignalType.ShowNGBackground]
+            [SignalType.UpdateCredit, SignalType.CloseEliminateScore, SignalType.CloseFGShowWin, SignalType.CloseFeature, SignalType.CloseFGRound, SignalType.CloseRoundText, SignalType.CloseFGBackground, SignalType.ShowNGBackground]
         ],
         "Idle": [
             // [ SignalType.CreditAddFGTotalWin ], // 目前改用累積在TotalWin那邊
