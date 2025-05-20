@@ -62,12 +62,20 @@ export class MainInformationComponent extends Component {
         });
     }
 
+    // 由動畫排程觸發
     private onUpdateCredit(event: ISignal) {
         console.log("! 更新總分(餘額)");
         let originCredit = Number(this.creditNumber.string);
         let finalCredit = originCredit + this._scoreToShow;
         this.creditNumber.string = finalCredit.toFixed(2).toString();
         event.CallBack();
+    }
+
+    // 由Spin按鈕觸發
+    public updateCredit(totalBet: number) {
+        let originCredit = Number(this.creditNumber.string);
+        let finalCredit = originCredit - totalBet;
+        this.creditNumber.string = finalCredit.toFixed(2).toString();
     }
 
     private onResetWinScore(event: ISignal) {

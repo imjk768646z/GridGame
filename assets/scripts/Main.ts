@@ -29,22 +29,22 @@ export class Main extends Component {
     private loadScene: LoadScene = null;
 
     @property(ButtonComponent)
-    private buttonComponent = null;
+    private buttonComponent: ButtonComponent = null;
 
     @property(BackgroundComponent)
-    private backgroundComponent = null;
+    private backgroundComponent: BackgroundComponent = null;
 
     @property(EffectComponent)
-    private effectComponent = null;
+    private effectComponent: EffectComponent = null;
 
     @property(EliminateScoreComponent)
-    private eliminateScoreComponent = null;
+    private eliminateScoreComponent: EliminateScoreComponent = null;
 
     @property(MainInformationComponent)
-    private mainInformationComponent = null;
+    private mainInformationComponent: MainInformationComponent = null;
 
     @property(TransitionComponent)
-    private transitionComponent = null;
+    private transitionComponent: TransitionComponent = null;
 
     private gameFacade: GameFacade = null;
     private fsm: fsm.FiniteStateMachine<GameState> = new fsm.FiniteStateMachine<GameState>(GameState.None, true);
@@ -98,21 +98,22 @@ export class Main extends Component {
         event.CallBack();
     }
 
-    private onSpin() {
-        console.log("! 切換到SpinState");
+    public onSpin() {
+        const betProxy = this.gameFacade.retrieveProxy(BetProxy.NAME) as BetProxy;
+        this.mainInformationComponent.updateCredit(betProxy.GetCurrentBet);
         this.fsm.go(GameState.NGSpin, this.fsmEvent(null, SignalAction.NG.SpinStart));
     }
 
-    private onStop() {
+    public onStop() {
         this.gameScene.GetReelControl.spinStop();
     }
 
-    private onRaise() {
+    public onRaise() {
         const betProxy = this.gameFacade.retrieveProxy(BetProxy.NAME) as BetProxy;
         this.mainInformationComponent.updateTotalBet(betProxy.raiseBet());
     }
 
-    private onReduce() {
+    public onReduce() {
         const betProxy = this.gameFacade.retrieveProxy(BetProxy.NAME) as BetProxy;
         this.mainInformationComponent.updateTotalBet(betProxy.reduceBet());
     }
