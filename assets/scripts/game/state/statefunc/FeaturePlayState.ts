@@ -3,7 +3,8 @@ import { SlotProxy } from "../../../mvc/model/SlotProxy";
 import { StateBase } from "../StateBase";
 import { GameState } from "../GameState";
 import { GameFacade } from "../../../GameFacade";
-import { SignalAction } from "../../../Definition";
+import { SignalAction, SoundList } from "../../../Definition";
+import { AudioEngineControl } from "../../../singleton/AudioEngineControl";
 
 export class FeaturePlayState extends StateBase {
     onEnter(from?: GameState, event?: IFSMEvent): boolean {
@@ -21,6 +22,7 @@ export class FeaturePlayState extends StateBase {
         //先判斷有無免費遊戲，才判斷有無消除
         if (slotProxy.hasFG()) {
             console.log("###進入FGTrigger");
+            AudioEngineControl.getInstance().playAudio(SoundList.FGTriggerBG, 1);
             event.fsm.go(GameState.FGTrigger, fsmProxy.fsmEvent(GameFacade.FGTRIGGER, SignalAction.FG.TriggerFG));
             return;
         }

@@ -6,6 +6,7 @@ import { StateBase } from "../StateBase";
 import { GameState } from "../GameState";
 import { SignalAction } from "../../../Definition";
 import { AssetsProperty } from "../../../mvc/controller/AssetsSavedCommand";
+import { AudioEngineControl } from "../../../singleton/AudioEngineControl";
 
 export class LoadState extends StateBase {
 
@@ -88,7 +89,7 @@ export class LoadState extends StateBase {
                     res(null);
                 } else {
                     audio.forEach((audio) => {
-                        // AudioEngineControl.getInstance().setAudioTask(audio.name, audio);
+                        AudioEngineControl.getInstance().setAudioTask(audio.name, audio);
                         this.audioClips.set(audio.name, audio);
                     })
                     // await this.nextLoad("", false);

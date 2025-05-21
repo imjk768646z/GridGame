@@ -2,10 +2,11 @@ import { _decorator, Component, Node, Vec3 } from 'cc';
 import { ReelBar } from './ReelBar';
 import { AssetsProperty } from '../mvc/controller/AssetsSavedCommand';
 import { AddSignal, SignalManager } from '../singleton/SignalManager';
-import { SignalType } from '../Definition';
+import { SignalType, SoundList } from '../Definition';
 import { ISignal } from './Signal';
 import { MultipleInfo, RemoveRule, RemoveSymbolRule } from '../mvc/model/SlotProxy';
 import { MultipleSymbolInfo } from '../mvc/model/MultipleProxy';
+import { AudioEngineControl } from '../singleton/AudioEngineControl';
 
 const { ccclass, property } = _decorator;
 
@@ -82,6 +83,7 @@ export class ReelControl extends Component {
 
     private totalSymbolToShowFrame = 0; //要顯示外框的symbol加總
     private onShowSymbolFrame(event: ISignal) {
+        AudioEngineControl.getInstance().playAudio(SoundList.ShowFrameStart, 1);
         // 計算總共有幾個symbol要顯示外框
         this._removeSymbolRule.removePos.forEach(symbolToRemove => {
             this.totalSymbolToShowFrame += symbolToRemove.length;
@@ -98,6 +100,7 @@ export class ReelControl extends Component {
         this.showFrameCount++;
         // 當顯示外框的次數達到上限，通知動畫排程已完成
         if (this.showFrameCount >= this.totalSymbolToShowFrame) {
+            AudioEngineControl.getInstance().playAudio(SoundList.ShowFrameEnd, 1);
             SignalManager.CallBack(SignalType[SignalType.ShowSymbolFrame]);
             // 結束後隱藏外框
             this.reelBars.forEach((reelBar) => {
@@ -136,6 +139,7 @@ export class ReelControl extends Component {
 
     private totalFreeSymbolToShowDynamic = 0; //要顯示免費圖標動態圖示的symbol加總
     private onShowFreeSymbolDynamic(event: ISignal) {
+        AudioEngineControl.getInstance().playAudio(SoundList.FreeGameSymbol, 1);
         this.reelBars.forEach((reelBar) => {
             reelBar.showFreeSymbolDynamic(this.onShowFreeSymbolDynamicComplete, this);
         })
@@ -157,6 +161,7 @@ export class ReelControl extends Component {
     }
 
     private onShowSingleSymbolDynamic(event: ISignal) {
+        AudioEngineControl.getInstance().playAudio(SoundList.MultipleSymbol, 1);
         this._multipleSymbolPos.forEach(symbolPos => {
             this.reelBars[symbolPos.reelBarOrdinal - 1].showSingleDynamic(symbolPos.symbolOrdinal, this.onshowSingleDynamicComplete, this);
         })
@@ -171,6 +176,7 @@ export class ReelControl extends Component {
 
     private totalSymbolToShowEliminate = 0;
     private onShowSymbolEliminate(event: ISignal) {
+        AudioEngineControl.getInstance().playAudio(SoundList.NGSymbolEliminate, 1);
         // 計算總共有幾個symbol要顯示消除動畫
         this._removeSymbolRule.removePos.forEach(symbolToRemove => {
             this.totalSymbolToShowEliminate += symbolToRemove.length;
@@ -240,6 +246,7 @@ export class ReelControl extends Component {
     }
 
     public spinOut(onComplete: Function) {
+        AudioEngineControl.getInstance().playAudio(SoundList.SPINOUT, 1);
         this.reelBars.forEach((reelBar, index) => {
             this.scheduleOnce(() => {
                 // 給予最後一個滾輪回呼事件，當所有滾輪移出畫面後，使用回呼將滾輪轉入
@@ -250,6 +257,7 @@ export class ReelControl extends Component {
     }
 
     public spinIn(resultReel: string[][]) {
+        AudioEngineControl.getInstance().playAudio(SoundList.SPININ, 1);
         this.reelBars.forEach((reelBar, index) => {
             this.scheduleOnce(() => {
                 // 給予最後一個滾輪回呼事件，當所有滾輪移出畫面後，使用回呼將滾輪轉入

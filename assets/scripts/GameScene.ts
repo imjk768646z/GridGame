@@ -9,6 +9,7 @@ import { AddSignal } from './singleton/SignalManager';
 import { SignalType } from './Definition';
 import { ISignal } from './component/Signal';
 import { ReelControl } from './component/ReelControl';
+import { AudioEngineControl } from './singleton/AudioEngineControl';
 
 const { ccclass, property } = _decorator;
 
@@ -88,9 +89,7 @@ export class GameScene extends Component {
     private multiplePos = [[], [5], [], [3]];
     async onTest() {
 
-        let m = 2;
-        let b = 5;
-        console.log("Result:", m += b * 2);
+        AudioEngineControl.getInstance().stopAudio();
         /* const MutipleIndexList = [];
         for (let i = 0; i < this.multiplePos.length; i++) {
             if (this.multiplePos[i].length > 0) {

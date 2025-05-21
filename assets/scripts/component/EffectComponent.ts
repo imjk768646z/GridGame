@@ -1,10 +1,11 @@
 import { _decorator, Component, dragonBones, Label, Node, Prefab, tween, UITransform, Vec3 } from 'cc';
 import { NodePoolManager } from '../singleton/NodePoolManager';
 import { AddSignal, SignalManager } from '../singleton/SignalManager';
-import { SignalType } from '../Definition';
+import { SignalType, SoundList } from '../Definition';
 import { ISignal } from './Signal';
 import { MultipleInfo, RemoveSymbolRule } from '../mvc/model/SlotProxy';
 import { MultipleSymbolInfo } from '../mvc/model/MultipleProxy';
+import { AudioEngineControl } from '../singleton/AudioEngineControl';
 const { ccclass, property } = _decorator;
 
 const FireBall_offsetY = 124; //火球特效與Symbol位置的Y軸偏移量
@@ -104,6 +105,7 @@ export class EffectComponent extends Component {
 
     // todo:要依照滾輪的順序 延遲播放火球特效
     public playFireBall(pos: number[][]) {
+        AudioEngineControl.getInstance().playAudio(SoundList.FireBall, 1);
         pos.forEach((ps, index) => {
             ps.forEach(symbolPos => {
                 let showPos = this._symbolLocalPos[index][symbolPos - 1];
@@ -133,6 +135,7 @@ export class EffectComponent extends Component {
         // 倍數位置有內容時，代表要顯示火球特效
         const isShowFireBall = this._multiplePos.some(pos => pos.length > 0);
         if (isShowFireBall) {
+            AudioEngineControl.getInstance().playAudio(SoundList.FireBall, 1);
             this._multiplePos.forEach((ps, index) => {
                 ps.forEach(symbolPos => {
                     let showPos = this._symbolLocalPos[index][symbolPos - 1];

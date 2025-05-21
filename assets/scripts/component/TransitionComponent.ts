@@ -1,7 +1,8 @@
 import { _decorator, Component, dragonBones, Label, Node, NodeEventType } from 'cc';
 import { AddSignal, SignalManager } from '../singleton/SignalManager';
-import { SignalType } from '../Definition';
+import { SignalType, SoundList } from '../Definition';
 import { ISignal } from './Signal';
+import { AudioEngineControl } from '../singleton/AudioEngineControl';
 const { ccclass, property } = _decorator;
 
 @ccclass('TransitionComponent')
@@ -17,8 +18,7 @@ export class TransitionComponent extends Component {
     private transition: dragonBones.ArmatureDisplay = null;
 
     onLoad() {
-        this.node.on(NodeEventType.TOUCH_START, this.onShowFGTransition, this);
-
+        this.fgTrigger.on(NodeEventType.TOUCH_START, this.onShowFGTransition, this);
         AddSignal(SignalType.ShowEnterFG, this.onShowEnterFG.bind(this));
         // AddSignal(SignalType.ShowFGTransition, this.onShowFGTransition.bind(this));
         AddSignal(SignalType.CloseEnterFG, this.onCloseEnterFG.bind(this));
@@ -49,6 +49,7 @@ export class TransitionComponent extends Component {
     }
 
     private onShowFGTransition() {
+        AudioEngineControl.getInstance().playAudio(SoundList.FreeGameTransform, 1);
         this.transition.node.active = true;
         this.transition.once(dragonBones.EventObject.COMPLETE, this.onShowFGTransitionComplete, this);
         this.transition.playAnimation("play", 1);

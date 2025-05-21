@@ -1,10 +1,11 @@
 import { _decorator, Color, Component, Label, Node, tween, UIOpacity, Vec3 } from 'cc';
 import { AddSignal } from '../singleton/SignalManager';
-import { SignalType } from '../Definition';
+import { SignalType, SoundList } from '../Definition';
 import { ISignal } from './Signal';
 import { MultipleSymbolInfo } from '../mvc/model/MultipleProxy';
 import { RemoveSymbolRule } from '../mvc/model/SlotProxy';
 import { RunScore } from './RunScore';
+import { AudioEngineControl } from '../singleton/AudioEngineControl';
 const { ccclass, property } = _decorator;
 
 const MovementDistance = 50;
@@ -221,6 +222,7 @@ export class EliminateScoreComponent extends Component {
     }
 
     private onMultiplicationEliminateScore(event: ISignal) {
+        AudioEngineControl.getInstance().playAudio(SoundList.MultiplicationEnd, 1);
         let originScore = Number(this.score.getComponent(Label).string);
         let currentMutiple = Number(this.multipleValue.getComponent(Label).string);
         let finalSocre = originScore * currentMutiple;

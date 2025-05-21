@@ -1,9 +1,10 @@
 import { _decorator, Component, Label, Node } from 'cc';
 import { RemoveSymbolRule } from '../mvc/model/SlotProxy';
 import { AddSignal } from '../singleton/SignalManager';
-import { SignalType } from '../Definition';
+import { SignalType, SoundList } from '../Definition';
 import { ISignal } from './Signal';
 import { RunScore } from './RunScore';
+import { AudioEngineControl } from '../singleton/AudioEngineControl';
 const { ccclass, property } = _decorator;
 
 @ccclass('MainInformationComponent')
@@ -52,14 +53,21 @@ export class MainInformationComponent extends Component {
     }
 
     private onRunWinScore(event: ISignal) {
+        AudioEngineControl.getInstance().playAudio(SoundList.RunWinScore, 1);
         let runScoreIns = this.winNumber.node.getComponent(RunScore);
         let startNum = Number(this.winNumber.string);
         let endNum = this._scoreToShow;
         runScoreIns.runScoreTime(1, endNum, startNum, () => {
             console.log("贏分 跑分結束");
+            AudioEngineControl.getInstance().stopAudio();
+            this.scheduleOnce(this.playAudioRunWinScoreEnd, 0);
             this.winNumber.string = Number(endNum).toFixed(2).toString();
             event.CallBack();
         });
+    }
+
+    private playAudioRunWinScoreEnd() {
+        AudioEngineControl.getInstance().playAudio(SoundList.RunWinScoreEnd, 1)
     }
 
     // 由動畫排程觸發

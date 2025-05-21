@@ -1,8 +1,9 @@
 import { _decorator, Component, dragonBones, Label, Node } from 'cc';
 import { AddSignal, SignalManager } from '../singleton/SignalManager';
-import { SignalType } from '../Definition';
+import { SignalType, SoundList } from '../Definition';
 import { ISignal } from './Signal';
 import { MultipleInfo, RemoveSymbolRule } from '../mvc/model/SlotProxy';
+import { AudioEngineControl } from '../singleton/AudioEngineControl';
 const { ccclass, property } = _decorator;
 
 @ccclass('BackgroundComponent')
@@ -69,6 +70,7 @@ export class BackgroundComponent extends Component {
     }
 
     public playLubuFire() {
+        AudioEngineControl.getInstance().playAudio(SoundList.LuBuFire, 1);
         this.lubu.once(dragonBones.EventObject.COMPLETE, this.onLubuFireComplete, this);
         this.lubu.playAnimation("play", 1);
     }
@@ -82,6 +84,7 @@ export class BackgroundComponent extends Component {
         // 倍數位置有內容時，代表要顯示呂布施法
         const isShowFireBall = this._multiplePos.some(pos => pos.length > 0);
         if (isShowFireBall) {
+            AudioEngineControl.getInstance().playAudio(SoundList.LuBuFire, 1);
             this.lubu.once(dragonBones.EventObject.COMPLETE, this.onShowLubuFireComplete, this);
             this.lubu.playAnimation("play", 1);
         } else {
@@ -97,11 +100,15 @@ export class BackgroundComponent extends Component {
     }
 
     private onShowNGBackground(event: ISignal) {
+        AudioEngineControl.getInstance().stopMusic();
+        AudioEngineControl.getInstance().playMusic(SoundList.NGBGM, true, 0, 1, null);
         this.ngBackground.active = true;
         event.CallBack();
     }
 
     private onShowFGBackground(event: ISignal) {
+        AudioEngineControl.getInstance().stopMusic();
+        AudioEngineControl.getInstance().playMusic(SoundList.FGBGM, true, 0, 1, null);
         this.fgBackground.active = true;
         event.CallBack();
     }

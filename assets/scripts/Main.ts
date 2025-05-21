@@ -4,7 +4,7 @@ import fsm from './kernel/utility/fsm.min.cjs';
 import { GameState } from './game/state/GameState';
 import { SignalScheduleParam } from './singleton/SignalSchedule';
 import { IFSMEvent } from './mvc/model/FSMProxy';
-import { SignalAction, SignalType } from './Definition';
+import { SignalAction, SignalType, SoundList } from './Definition';
 import { GameScene } from './GameScene';
 import { LoadScene } from './LoadScene';
 import { AddSignal } from './singleton/SignalManager';
@@ -16,6 +16,7 @@ import { EliminateScoreComponent } from './component/EliminateScoreComponent';
 import { MainInformationComponent } from './component/MainInformationComponent';
 import { BetProxy } from './mvc/model/BetProxy';
 import { TransitionComponent } from './component/TransitionComponent';
+import { AudioEngineControl } from './singleton/AudioEngineControl';
 
 const { ccclass, property } = _decorator;
 
@@ -92,6 +93,7 @@ export class Main extends Component {
     }
 
     private onShowNGScene(event: ISignal) {
+        AudioEngineControl.getInstance().playMusic(SoundList.NGBGM, true, 0, 1, null);
         this.gameScene.init();
         this.gameFacade.sendNotification("SAVED_SYMBOL_POS");
         this.gameFacade.sendNotification("SAVED_ELIMINATESCORE_POS");

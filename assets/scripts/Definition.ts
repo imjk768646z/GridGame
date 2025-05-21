@@ -50,8 +50,8 @@ export enum SlotGameEvent {
 // 定義音效別名
 export const SoundList = {
     // Bgm
-    NGBGM: "NG_BGM",
-    FGBGM: "FG_BGM",
+    NGBGM: "Music_Base_Spin",
+    FGBGM: "Music_Base_Combos",
     // JP
     JPTriggerBG: "JP_BGM",
     JPCountEnd: "JP_Count_End",
@@ -63,11 +63,12 @@ export const SoundList = {
     MoneyCount: "UI_Count(Loop)",
     CountEnd: "UI_Double",
     // FG
-    FGTriggerBG: "UI_FG_Intro",
+    FGTriggerBG: "Sound_Alarmbell",
     FGSettleBG: "UI_Final_Orchestra",
     FGSymbolTrigger: "SymbolF",
     //button
-    SPIN: "UI_Spin",
+    SPINOUT: "Sound_Btn_Spin",
+    SPININ: "Sound_SpinStop",
     STOP: "UI_Stop",
     REQULAR: "UI_Button",
     // Reel
@@ -83,6 +84,18 @@ export const SoundList = {
     // Other todo:待補
     Hit: "Hit",
     JPHit: "JPHit",
+    // Effect
+    LuBuFire: "Sound_BG_Thor",
+    FireBall: "Sound_ThorLighting",
+    RunWinScore: "Sound_Base_Scoring",
+    RunWinScoreEnd: "Sound_Base_ScoringEnd",
+    ShowFrameStart: "Sound_BG_Delete1",
+    ShowFrameEnd: "Sound_Symbol_Hit",
+    MultipleSymbol: "Sound_Win_F1",
+    NGSymbolEliminate: "Sound_BG_Symbol_Delete1",
+    MultiplicationEnd: "Sound_F1_WinEnd",
+    FreeGameSymbol: "Sound_Win_B1",
+    FreeGameTransform: "Sound_Free_SpinStart",
 }
 
 // export const LinesData: Array<string> = new Array<string>(
@@ -104,7 +117,7 @@ export enum SignalType {
     RunScoreOnRemoveBoard,     //在消除贏分上顯示倍數滾分(待實作)
     RunWinScore,               //贏分跑分
     ResetWinScore,             //贏分歸零
-    ShowSymbolEliminate,
+    ShowSymbolEliminate,       //顯示消除動畫
     ShowEliminateScore,        //顯示消除贏分
     CloseEliminateScore,       //關閉消除贏分
     AdditionEliminateScore,          //計算消除贏分(加上前一個分數) //todo: 這個沒用到可以刪除

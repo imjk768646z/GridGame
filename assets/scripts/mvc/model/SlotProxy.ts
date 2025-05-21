@@ -68,8 +68,8 @@ export class SlotProxy extends Proxy {
                 //依照RemoveSymbolRule依序執行消除動畫
                 <RemoveSymbolRule>{ score: 0.10, updateReelData: [["N1", "F"], ["H4"], ["N3"], ["N3", "H1"], [], ["H3", "H3"]], removePos: [[1, 2], [5], [5], [2, 3], [], [1, 2]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
-        },
-        <SlotFlow>{ //無消除 出現一個倍數(不處理)
+        }, */
+        /* <SlotFlow>{ //無消除 出現一個倍數(不處理)
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
                 updateReelData: [["N2", "N3", "N3", "H2", "H2"], ["H3", "S2", "N2", "N1", "N4"], ["F", "N4", "N4", "H3", "H3"], ["H1", "H2", "H2", "N5", "N5"], ["N4", "N4", "N1", "N1", "H3"], ["H2", "H2", "H3", "H3", "N1"]],
