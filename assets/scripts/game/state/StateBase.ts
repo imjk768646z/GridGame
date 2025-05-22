@@ -28,8 +28,8 @@ export class StateBase implements IState<GameState> {
         this._event = event;
         // this.resetModel();
 
-        // 切換狀態
-        // event.view.updateViewState(event.fsm.currentState); //todo:按鈕組件需要透過它來更新狀態
+        //更新狀態按鈕狀態
+        event.facade.sendNotification("UPDATE_BUTTON_STATE", event.fsm.currentState);
 
         //如果有命令 一律先執行
         if (event.command != null) event.facade.sendNotification(event.command);

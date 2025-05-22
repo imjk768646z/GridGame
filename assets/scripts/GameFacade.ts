@@ -11,6 +11,7 @@ import { WaitStateCommand } from "./mvc/controller/WaitStateCommand";
 import { FGRemoveStateCommand } from "./mvc/controller/FGRemoveStateCommand";
 import { FGTriggerStateCommand } from "./mvc/controller/FGTriggerStateCommand";
 import { FGMultipleHandleStateCommand } from "./mvc/controller/FGMultipleHandleStateCommand";
+import { NGSpinStateCommand } from "./mvc/controller/NGSpinStateCommand";
 
 // 宣告Notification變數
 export const STARTUP: string = "startup";
@@ -26,6 +27,7 @@ export class GameFacade extends Facade implements IFacade {
     public static LOAD: string = "LOAD"; //LoadState
     public static INIT: string = "INIT"; //InitState
     public static WAIT: string = "WAIT"; //WaitState
+    public static NGSPIN: string = "NGSPIN"; //NGSpinState
     public static REMOVE: string = "REMOVE"; //RemoveState
     public static FGTRIGGER: string = "FGTRIGGER"; //FGTriggerState
     public static FGREMOVE: string = "FGREMOVE"; //FGRemoveState
@@ -47,6 +49,7 @@ export class GameFacade extends Facade implements IFacade {
         // this.registerCommand(GameFacade.LOAD, this.loadCommand);
         this.registerCommand(GameFacade.INIT, this.initCommand);
         this.registerCommand(GameFacade.WAIT, this.waitStateCommand);
+        this.registerCommand(GameFacade.NGSPIN, this.ngSpinStateCommand);
         this.registerCommand(GameFacade.REMOVE, this.removeStateCommand);
         this.registerCommand(GameFacade.FGTRIGGER, this.fgTriggerStateCommand);
         this.registerCommand(GameFacade.FGREMOVE, this.fgRemoveStateCommand);
@@ -74,6 +77,10 @@ export class GameFacade extends Facade implements IFacade {
 
     private waitStateCommand(): ICommand {
         return new WaitStateCommand();
+    }
+
+    private ngSpinStateCommand(): ICommand {
+        return new NGSpinStateCommand();
     }
 
     private removeStateCommand(): ICommand {

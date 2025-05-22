@@ -17,6 +17,7 @@ import { MainInformationComponent } from './component/MainInformationComponent';
 import { BetProxy } from './mvc/model/BetProxy';
 import { TransitionComponent } from './component/TransitionComponent';
 import { AudioEngineControl } from './singleton/AudioEngineControl';
+import { SlotProxy } from './mvc/model/SlotProxy';
 
 const { ccclass, property } = _decorator;
 
@@ -101,9 +102,7 @@ export class Main extends Component {
     }
 
     public onSpin() {
-        const betProxy = this.gameFacade.retrieveProxy(BetProxy.NAME) as BetProxy;
-        this.mainInformationComponent.updateCredit(betProxy.GetCurrentBet);
-        this.fsm.go(GameState.NGSpin, this.fsmEvent(null, SignalAction.NG.SpinStart));
+        this.fsm.go(GameState.NGSpin, this.fsmEvent(GameFacade.NGSPIN, SignalAction.NG.SpinStart));
     }
 
     public onStop() {
@@ -118,6 +117,19 @@ export class Main extends Component {
     public onReduce() {
         const betProxy = this.gameFacade.retrieveProxy(BetProxy.NAME) as BetProxy;
         this.mainInformationComponent.updateTotalBet(betProxy.reduceBet());
+    }
+
+    public onAutoOn() {
+        const slotProxy = this.gameFacade.retrieveProxy(SlotProxy.NAME) as SlotProxy;
+        slotProxy.SetAutoMode = true;
+        this.gameFacade.sendNotification("UPDATE_AUTO_MODE", true);
+        this.fsm.go(GameState.NGSpin, this.fsmEvent(GameFacade.NGSPIN, SignalAction.NG.SpinStart));
+    }
+
+    public onAutoOff() {
+        const slotProxy = this.gameFacade.retrieveProxy(SlotProxy.NAME) as SlotProxy;
+        slotProxy.SetAutoMode = false;
+        this.gameFacade.sendNotification("UPDATE_AUTO_MODE", false);
     }
 
     update(deltaTime: number) {

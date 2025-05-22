@@ -1,4 +1,4 @@
-import { _decorator, Color, Component, dragonBones, Label, Node, NodeEventType, tween, Vec3 } from 'cc';
+import { _decorator, Button, Color, Component, dragonBones, Label, Node, NodeEventType, Sprite, tween, Vec3 } from 'cc';
 import { GameFacade } from './GameFacade';
 import { ReelBar } from './component/ReelBar';
 import fsm from './kernel/utility/fsm.min.cjs';
@@ -88,8 +88,7 @@ export class GameScene extends Component {
     private mainIndex = 0;
     private multiplePos = [[], [5], [], [3]];
     async onTest() {
-
-        AudioEngineControl.getInstance().stopAudio();
+        this.testButton.getComponent(Button).interactable = false;
         /* const MutipleIndexList = [];
         for (let i = 0; i < this.multiplePos.length; i++) {
             if (this.multiplePos[i].length > 0) {

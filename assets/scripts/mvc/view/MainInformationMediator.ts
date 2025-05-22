@@ -17,7 +17,7 @@ export class MainInformationMediator extends Mediator {
 
     // 列出該Mediator關心的Notification
     public listNotificationInterests(): string[] {
-        return ["SET_REMOVE_INFO", "SET_SCORE_VALUE", "SET_SCORE_VALUE_MainInformationComponent", "SET_DEFAULT_BET"];
+        return ["SET_REMOVE_INFO", "SET_SCORE_VALUE", "SET_SCORE_VALUE_MainInformationComponent", "SET_DEFAULT_BET", "UPDATE_CREDIT"];
     }
 
     public handleNotification(notification: INotification) {
@@ -31,6 +31,9 @@ export class MainInformationMediator extends Mediator {
                 break;
             case "SET_DEFAULT_BET":
                 this.mainInformationComponent.updateTotalBet(notification.body);
+                break;
+            case "UPDATE_CREDIT":
+                this.mainInformationComponent.updateCredit(notification.body);
                 break;
             default:
                 break;

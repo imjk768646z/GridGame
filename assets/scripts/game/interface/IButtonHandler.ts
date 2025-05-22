@@ -3,4 +3,6 @@ export interface IButtonHandler {
     onStop();
     onRaise();
     onReduce();
+    onAutoOn();
+    onAutoOff();
 }

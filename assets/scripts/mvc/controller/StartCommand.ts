@@ -12,6 +12,7 @@ import { MainInformationMediator } from "../view/MainInformationMediator";
 import { ScoreProxy } from "../model/ScoreProxy";
 import { BetProxy } from "../model/BetProxy";
 import { TransitionMediator } from "../view/TransitionMediator";
+import { ButtonMediator } from "../view/ButtonMediator";
 
 /**
  * 初始化流程
@@ -34,6 +35,7 @@ export class StartCommand extends SimpleCommand {
         this.facade.registerMediator(new EliminateScoreMediator(Main.eliminateScoreComponent));
         this.facade.registerMediator(new MainInformationMediator(Main.mainInformationComponent));
         this.facade.registerMediator(new TransitionMediator(Main.transitionComponent));
+        this.facade.registerMediator(new ButtonMediator(Main.buttonComponent));
         // this.facade.registerMediator(new GameMediator(gameScene.SpinButton));
         // this.facade.registerMediator(new ReelBarMediator(gameScene.ReelBarInstance));
         // todo: 需註冊按鈕和滾輪實例 但不一定完全按照上面的作法

@@ -405,4 +405,13 @@ export class SlotProxy extends Proxy {
             this.fgHandleRemoveIndex = 0;
         }
     }
+
+    private _isAutoMode: boolean = false;
+    public set SetAutoMode(mode: boolean) {
+        this._isAutoMode = mode;
+    }
+
+    public get GetAutoMode(): boolean {
+        return this._isAutoMode;
+    }
 }
