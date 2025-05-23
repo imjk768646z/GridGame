@@ -5,4 +5,5 @@ export interface IButtonHandler {
     onReduce();
     onAutoOn();
     onAutoOff();
+    onInfo();
 }

@@ -12,7 +12,7 @@ export enum ButtonList {
     btn_auto_off,
     btn_raise,
     btn_reduce,
-    // btn_info,
+    btn_info,
 };
 
 @ccclass('ButtonComponent')
@@ -61,15 +61,12 @@ export class ButtonComponent extends Component {
     onButtonClick(event: any, customEventData?: any) {
         switch (customEventData) {
             case ButtonList.btn_spin:
-                console.log("按下轉動");
                 this.handler.onSpin();
                 break;
             case ButtonList.btn_stop:
-                console.log("按下停止");
                 this.handler.onStop();
                 break;
             case ButtonList.btn_auto_on:
-                console.log("開啟自動模式");
                 this.handler.onAutoOn();
                 break;
             case ButtonList.btn_auto_stop:
@@ -84,8 +81,9 @@ export class ButtonComponent extends Component {
             case ButtonList.btn_reduce:
                 this.handler.onReduce();
                 break;
-            // case ButtonList.btn_info:
-            //     break;
+            case ButtonList.btn_info:
+                this.handler.onInfo();
+                break;
             default:
         }
     }
@@ -113,6 +111,7 @@ export class ButtonComponent extends Component {
             case GameState.Wait:
                 this.setBtnInteractable(ButtonList.btn_auto_stop, true);
                 this.setBtnInteractable(ButtonList.btn_auto_on, true);
+                this.setBtnInteractable(ButtonList.btn_info, true);
                 if (this.isAutoMode) {
                     this.setBtnVisible(ButtonList.btn_spin, false);
                     this.setBtnVisible(ButtonList.btn_stop, false);
@@ -132,6 +131,7 @@ export class ButtonComponent extends Component {
                 }
                 break;
             case GameState.NGSpin:
+                this.setBtnInteractable(ButtonList.btn_info, false);
                 if (this.isAutoMode) {
                     this.setBtnVisible(ButtonList.btn_spin, false);
                     this.setBtnVisible(ButtonList.btn_stop, false);
@@ -151,6 +151,7 @@ export class ButtonComponent extends Component {
                 }
                 break;
             case GameState.FGSpin:
+                this.setBtnInteractable(ButtonList.btn_info, false);
                 if (this.isAutoMode) {
                     this.setBtnVisible(ButtonList.btn_spin, false);
                     this.setBtnVisible(ButtonList.btn_stop, false);
@@ -174,6 +175,7 @@ export class ButtonComponent extends Component {
                 break;
             case GameState.FeaturePlay:
             case GameState.FGFeaturePlay:
+                this.setBtnInteractable(ButtonList.btn_info, false);
                 if (this.isAutoMode) {
                     this.setBtnVisible(ButtonList.btn_spin, false);
                     this.setBtnVisible(ButtonList.btn_stop, false);

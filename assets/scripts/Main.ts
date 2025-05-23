@@ -18,6 +18,7 @@ import { BetProxy } from './mvc/model/BetProxy';
 import { TransitionComponent } from './component/TransitionComponent';
 import { AudioEngineControl } from './singleton/AudioEngineControl';
 import { SlotProxy } from './mvc/model/SlotProxy';
+import { GameRule } from './component/GameRule';
 
 const { ccclass, property } = _decorator;
 
@@ -48,6 +49,9 @@ export class Main extends Component {
     @property(TransitionComponent)
     private transitionComponent: TransitionComponent = null;
 
+    @property(GameRule)
+    private gameRule: GameRule = null;
+
     private gameFacade: GameFacade = null;
     private fsm: fsm.FiniteStateMachine<GameState> = new fsm.FiniteStateMachine<GameState>(GameState.None, true);
 
@@ -74,6 +78,7 @@ export class Main extends Component {
     }
 
     private init() {
+        this.gameRule.node.active = false;
         this.gameScene.SetFSM = this.fsm;
         this.buttonComponent.init(this);
         this.gameFacade.startup(this);
@@ -130,6 +135,11 @@ export class Main extends Component {
         const slotProxy = this.gameFacade.retrieveProxy(SlotProxy.NAME) as SlotProxy;
         slotProxy.SetAutoMode = false;
         this.gameFacade.sendNotification("UPDATE_AUTO_MODE", false);
+    }
+
+    public onInfo() {
+        if (this.gameRule.node.active) return;
+        this.gameRule.node.active = true;
     }
 
     update(deltaTime: number) {
