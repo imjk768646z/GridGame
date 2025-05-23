@@ -516,17 +516,19 @@ export class ReelBar extends Component {
             /* tween(node)
                 .to(1, { position: this.symbolPosition[symbolIns.getSymbolId] })
                 .start(); */
-            const p = new Promise<Node>(resolve => {
-                tween(node)
-                    // todo:速度要再調整 盡量利用全域變數控制 或是進入tween之前使用switch case選擇相應的速度
-                    .to(0.5, { position: this.symbolPosition[symbolIns.getSymbolId] })
-                    .call(() => {
-                        resolve(node);
-                    })
-                    .start();
-            })
-
-            tweenPromise.push(p);
+            if (symbolCount != 0) { //symbolCount不為0代表ID值改變過，需要做掉落處理，如果為0代表ID值沒有改變，不須做任何移動
+                const p = new Promise<Node>(resolve => {
+                    tween(node)
+                        // todo:速度要再調整 盡量利用全域變數控制 或是進入tween之前使用switch case選擇相應的速度
+                        .to(0.2, { position: this.symbolPosition[symbolIns.getSymbolId] })
+                        .call(() => {
+                            this.specificSymbolBounce(symbolIns.getSymbolId);
+                            resolve(node);
+                        })
+                        .start();
+                })
+                tweenPromise.push(p);
+            }
         })
 
         await Promise.all(tweenPromise)
@@ -593,9 +595,10 @@ export class ReelBar extends Component {
                 tween(symbol)
                     // todo:速度要再調整 盡量利用全域變數控制 或是進入tween之前使用switch case選擇相應的速度
                     // .to(Math.abs(symbolCount - (this.symbolCountFOV + 1)) * 0.3, { position: this.symbolPosition[symbolIns.getSymbolId] })
-                    .to(0.5, { position: this.symbolPosition[symbolIns.getSymbolId] })
+                    .to(0.2, { position: this.symbolPosition[symbolIns.getSymbolId] })
                     .call(() => {
                         // todo: 補上回彈效果
+                        this.specificSymbolBounce(symbolIns.getSymbolId);
                         resolve(symbol);
                     })
                     .start();
@@ -690,6 +693,22 @@ export class ReelBar extends Component {
             let symbolIns = this.symbolNode[i].getComponent(Symbol);
             symbolIns.bounce();
         }
+    }
+
+    private allSymbolBounce() {
+        this.symbolGroup.children.forEach(node => {
+            let symbolIns = node.getComponent(Symbol);
+            symbolIns.bounce();
+        })
+    }
+
+    private specificSymbolBounce(id: number) {
+        this.symbolGroup.children.forEach(node => {
+            let symbolIns = node.getComponent(Symbol);
+            if (symbolIns.getSymbolId == id) {
+                symbolIns.bounce();
+            }
+        })
     }
 
     public closeAllMultiple() {

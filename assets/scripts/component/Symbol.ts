@@ -166,8 +166,9 @@ export class Symbol extends Component {
 
     bounce() {
         tween(this.node)
-            .by(1, { position: new Vec3(0, -20, 0) })
-            .by(1, { position: new Vec3(0, 20, 0) })
+            .by(0.1, { position: new Vec3(0, -15, 0) })
+            .by(0.2, { position: new Vec3(0, 20, 0) })
+            .by(0.1, { position: new Vec3(0, -5, 0) })
             .start();
     }
 
