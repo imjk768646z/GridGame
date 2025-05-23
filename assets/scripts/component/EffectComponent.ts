@@ -223,8 +223,8 @@ export class EffectComponent extends Component {
 
     private onChangeMultipleScale(event: ISignal) {
         tween(this._mMultiple)
-            .to(0.5, { scale: new Vec3(1.2, 1.2, 1.2) })
-            .to(0.5, { scale: new Vec3(1, 1, 1) })
+            .to(0.3, { scale: new Vec3(1.2, 1.2, 1.2) })
+            .to(0.3, { scale: new Vec3(1, 1, 1) })
             .call(() => {
                 event.CallBack();
             })
@@ -233,7 +233,7 @@ export class EffectComponent extends Component {
 
     private onShowMultipleFly(event: ISignal) {
         tween(this._mMultiple)
-            .to(0.8, { position: new Vec3(this._eliminateBannerLocalPos.x + EliminateBanner_offsetX, this._eliminateBannerLocalPos.y, this._eliminateBannerLocalPos.z) })
+            .to(0.5, { position: new Vec3(this._eliminateBannerLocalPos.x + EliminateBanner_offsetX, this._eliminateBannerLocalPos.y, this._eliminateBannerLocalPos.z) })
             .call(() => {
                 this._mMultiple.active = false;
                 event.CallBack();

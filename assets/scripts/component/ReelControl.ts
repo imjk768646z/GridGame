@@ -252,7 +252,7 @@ export class ReelControl extends Component {
                 // 給予最後一個滾輪回呼事件，當所有滾輪移出畫面後，使用回呼將滾輪轉入
                 (index == this.reelBars.length - 1) ? reelBar.spinOut(onComplete) : reelBar.spinOut();
                 // console.log(`--第${index}個滾輪開始轉動--`);
-            }, index * 0.2);
+            }, index * 0.1);
         })
     }
 
@@ -263,7 +263,7 @@ export class ReelControl extends Component {
                 // 給予最後一個滾輪回呼事件，當所有滾輪移出畫面後，使用回呼將滾輪轉入
                 reelBar.spinIn(this.reelBars.length, resultReel[index]);
                 // console.log(`--第${index}個滾輪開始轉動--`);
-            }, index * 0.2);
+            }, index * 0.1);
         })
     }
 

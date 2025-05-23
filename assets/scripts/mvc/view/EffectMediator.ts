@@ -42,7 +42,7 @@ export class EffectMediator extends Mediator {
                 //延遲一段時間再丟出火球
                 setTimeout(() => {
                     this.effectComponent.playFireBall(positions);
-                }, 1500);
+                }, 1000);
                 break;
             case "SET_BET_MULTIPLE":
                 this.effectComponent.SetBetMultiple = notification.body;

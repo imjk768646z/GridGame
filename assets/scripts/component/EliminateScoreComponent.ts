@@ -114,7 +114,7 @@ export class EliminateScoreComponent extends Component {
 
     private onEliminateScoreMoveLeft(event: ISignal) {
         tween(this.score)
-            .by(1, { position: new Vec3(-(MovementDistance), 0, 0) })
+            .by(0.5, { position: new Vec3(-(MovementDistance), 0, 0) })
             .call(() => {
                 event.CallBack();
             })
@@ -229,8 +229,8 @@ export class EliminateScoreComponent extends Component {
         this.score.getComponent(Label).string = Number(finalSocre).toFixed(2).toString();
 
         tween(this.score)
-            .to(0.5, { scale: new Vec3(1.5, 1.5, 1.5) })
-            .to(0.5, { scale: new Vec3(1, 1, 1) })
+            .to(0.3, { scale: new Vec3(1.5, 1.5, 1.5) })
+            .to(0.3, { scale: new Vec3(1, 1, 1) })
             .call(() => {
                 event.CallBack();
             })
