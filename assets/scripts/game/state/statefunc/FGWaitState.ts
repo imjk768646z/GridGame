@@ -17,7 +17,9 @@ export class FGWaitState extends StateBase {
         const slotProxy = event.facade.retrieveProxy(SlotProxy.NAME) as SlotProxy;
         event.facade.sendNotification("UPDATE_FG_ROUND", slotProxy.GetRestOfFGRound);
         const fsmProxy = event.facade.retrieveProxy(FSMProxy.NAME) as FSMProxy;
-        event.fsm.go(GameState.FGSpin, fsmProxy.fsmEvent(null, SignalAction.FG.BeforeSpin));
+        setTimeout(() => {
+            event.fsm.go(GameState.FGSpin, fsmProxy.fsmEvent(null, SignalAction.FG.BeforeSpin));
+        }, 500);
     }
 
     /* onExit(from?: GameState, event?: any) {

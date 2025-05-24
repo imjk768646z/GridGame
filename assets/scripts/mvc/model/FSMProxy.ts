@@ -68,8 +68,10 @@ export class FSMProxy extends Proxy {
         this.fsm.from(GameState.FGSpin).to(GameState.FGFeaturePlay);
         this.fsm.from(GameState.FGFeaturePlay).to(GameState.FGRemove);
         this.fsm.from(GameState.FGFeaturePlay).to(GameState.FGShowWin);
+        this.fsm.from(GameState.FGFeaturePlay).to(GameState.FGWait);
         this.fsm.from(GameState.FGRemove).to(GameState.FGMultipleHandle);
         this.fsm.from(GameState.FGRemove).to(GameState.FGShowWin);
+        this.fsm.from(GameState.FGRemove).to(GameState.FGWait);
         this.fsm.from(GameState.FGMultipleHandle).to(GameState.FGShowWin);
         this.fsm.from(GameState.FGMultipleHandle).to(GameState.FGWait);
         this.fsm.from(GameState.FGShowWin).to(GameState.FGComplete);
