@@ -73,7 +73,7 @@ export class TransitionComponent extends Component {
     private onShowFGShowWin(event: ISignal) {
         this.node.active = true;
         this.fgShowWin.active = true;
-        this.fgShowWin.getChildByName("text").getChildByName("winScore").getComponent(Label).string = this._scoreToShow.toString();
+        this.fgShowWin.getChildByName("text").getChildByName("winScore").getComponent(Label).string = this._scoreToShow.toFixed(2);
 
         setTimeout(() => {
             event.CallBack();
