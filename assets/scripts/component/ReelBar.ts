@@ -29,6 +29,7 @@ export class ReelBar extends Component {
 
     private topOuterSymbolPos: Vec3;
     private symbolGroup: Node = null;
+    private symbolGroupOffsetY = 0;  //SymbolGroup節點的Y軸偏移(影響整個輪子的高度)
     private symbolNode: Node[] = []; //紀錄每一個Symbol的資訊 不過在消除類沒什麼用處 有symbolGroup就足夠
     private symbolPosition: Vec3[] = []; //每個symbol所在的位置
     private symbolRemove: number[] = [];
@@ -190,7 +191,7 @@ export class ReelBar extends Component {
             } */
             // 記錄每一個圖標的位置(框線外最上方位置 + 可視範圍N個symbol位置)
             if (i == 0) {
-                this.symbolPosition.push(new Vec3(0, TopY + SymbolHalfHeight, 0));
+                this.symbolPosition.push(new Vec3(0, TopY + SymbolHalfHeight + this.symbolGroupOffsetY, 0));
             } else {
                 // 由上而下產生symbol
                 let nodePool = NodePoolManager.getNodePoolMgr();
@@ -709,7 +710,6 @@ export interface SpriteInfo {
     scale: number,
 }
 
-// todo: 與參考圖片調整每個symbol尺寸
 export const SymbolSpriteSetting = {
     "N1": <SpriteInfo>{ spriteName: "img_symbol_N1", scale: 1 },
     "N2": <SpriteInfo>{ spriteName: "img_symbol_N2", scale: 1 },
