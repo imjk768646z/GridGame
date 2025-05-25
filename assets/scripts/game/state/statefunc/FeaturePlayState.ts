@@ -21,7 +21,6 @@ export class FeaturePlayState extends StateBase {
 
         //先判斷有無免費遊戲，才判斷有無消除
         if (slotProxy.hasFG()) {
-            console.log("###進入FGTrigger");
             AudioEngineControl.getInstance().playAudio(SoundList.FGTriggerBG, 1);
             event.fsm.go(GameState.FGTrigger, fsmProxy.fsmEvent(GameFacade.FGTRIGGER, SignalAction.FG.TriggerFG));
             return;

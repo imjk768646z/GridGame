@@ -38,7 +38,6 @@ export class FGMultipleHandleState extends StateBase {
             // FG局數是否達到上限
             const isFGRoundComplete = slotProxy.isFGRoundComplete();
             if (isFGRoundComplete) {
-                console.log("切換到FGShowWin");
                 //切換到FGShowWin
                 const scoreProxy = this.event.facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy;
                 this.event.facade.sendNotification("SET_SCORE_VALUE_TransitionComponent", scoreProxy.GetScore);

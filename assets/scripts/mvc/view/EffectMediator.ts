@@ -33,7 +33,6 @@ export class EffectMediator extends Mediator {
                 break;
             case "SAVED_MULTIPLE_SYMBOL":
                 const multipleSymbolInfo = notification.body;
-                console.log("! 當前要處理的倍數:", multipleSymbolInfo);
                 this.effectComponent.SetMultipleSymbolPos = multipleSymbolInfo;
                 break;
             case "FIRE_BALL":

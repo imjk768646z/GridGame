@@ -24,7 +24,7 @@ export class MultipleProxy extends Proxy {
                 this.handleMutipleIndexList.push(i);
             }
         }
-        console.log("! 總共要處理的倍數索引值:", this.handleMutipleIndexList);
+        // console.log("總共要處理的倍數索引值:", this.handleMutipleIndexList);
     }
 
     /* public set SetMultipleSymbol(data: MultipleSymbolInfo[]) {
@@ -33,15 +33,12 @@ export class MultipleProxy extends Proxy {
 
     // 取得目前出現倍數的位置
     public getCurrentMultiplePos(): MultipleSymbolInfo[] {
-        console.log("! getCurrentMultiplePos")
         // const SingleReelSymbolPos = this._multipleSymbolPos[this.mainIndex];
-        // console.log("! getCurrentMultiplePos:", SingleReelSymbolPos, "mainIndex:", this.mainIndex, "所有倍數資訊:", this._multipleSymbolPos);
 
         // this.mainIndex++;
         // return SingleReelSymbolPos;
 
         let todoIndex = this.handleMutipleIndexList.shift();
-        console.log("! 取出後剩下:", this.handleMutipleIndexList)
         const SingleReelSymbolPos = this._multipleSymbolPos[todoIndex];
         return SingleReelSymbolPos;
     }

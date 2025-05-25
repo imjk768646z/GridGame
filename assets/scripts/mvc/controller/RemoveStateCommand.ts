@@ -8,7 +8,7 @@ export class RemoveStateCommand extends SimpleCommand {
         const slotProxy = this.facade.retrieveProxy(SlotProxy.NAME) as SlotProxy;
 
         const removeSymbolRule = slotProxy.getRemoveUpdateReelData() as RemoveSymbolRule | null;
-        console.log("執行[消去]動畫之前 寫入消去的資訊到ReelBar:", removeSymbolRule);
+        // console.log("執行[消去]動畫之前 寫入消去的資訊到ReelBar:", removeSymbolRule);
         this.facade.sendNotification("SET_REMOVE_INFO", removeSymbolRule);
         const betProxy = this.facade.retrieveProxy(BetProxy.NAME) as BetProxy;
         this.facade.sendNotification("SET_BET_MULTIPLE", betProxy.GetCurrentBetMultiple);

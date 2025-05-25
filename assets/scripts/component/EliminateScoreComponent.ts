@@ -115,14 +115,12 @@ export class EliminateScoreComponent extends Component {
             startNum = Number(scoreLabel);         //從Label原本停留的數字開始
             endNum = startNum + this._scoreToShow; //加上本次消除的分數
             runScoreIns.runScoreTime(1, endNum, startNum, () => {
-                console.log("消除贏分 跑分結束");
                 this.score.getComponent(Label).string = Number(endNum).toFixed(2).toString();
                 event.CallBack();
             });
         } else {
             endNum = Number(this._scoreToShow.toFixed(2));
             runScoreIns.runScoreTime(1, endNum, startNum, () => {
-                console.log("消除贏分 跑分結束");
                 this.score.getComponent(Label).string = Number(endNum).toFixed(2).toString();
                 event.CallBack();
             });
@@ -134,7 +132,6 @@ export class EliminateScoreComponent extends Component {
         let startNum: number = 0.00;
         let endNum = Number(this._scoreToShow.toFixed(2));
         runScoreIns.runScoreTime(1, endNum, startNum, () => {
-            console.log("消除贏分 跑分結束[FG]");
             this.score.getComponent(Label).string = Number(endNum).toFixed(2).toString();
             event.CallBack();
         });

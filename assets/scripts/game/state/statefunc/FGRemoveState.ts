@@ -29,20 +29,16 @@ export class FGRemoveState extends StateBase {
         const slotProxy = this.event.facade.retrieveProxy(SlotProxy.NAME) as SlotProxy;
         const fsmProxy = this.event.facade.retrieveProxy(FSMProxy.NAME) as FSMProxy;
         if (slotProxy.isNextFGRemove()) {
-            console.log("[FG] 進行下一個消除");
             this.event.fsm.go(GameState.FGRemove, fsmProxy.fsmEvent(GameFacade.FGREMOVE, SignalAction.FG.Remove));
         } else {
             if (slotProxy.hasFGMultipleInfo()) {
-                console.log("切換狀態機 處理倍數移動");
                 this.event.facade.sendNotification("SEARCH_MULTIPLE_SYMBOL"); //進入MultipleHandle之前只會執行一次(注意:只能呼叫一次)
                 this.event.fsm.go(GameState.FGMultipleHandle, fsmProxy.fsmEvent(GameFacade.FGMULTIPLE_HANDLE, SignalAction.FG.MultipleHandle));
             } else {
-                // console.log("切換到NGShowWin 更新總分");
                 // this.event.fsm.go(GameState.FGShowWin, fsmProxy.fsmEvent(null, SignalAction.FG.Win));
                 // FG局數是否達到上限
                 const isFGRoundComplete = slotProxy.isFGRoundComplete();
                 if (isFGRoundComplete) {
-                    console.log("切換到FGShowWin");
                     //切換到FGShowWin
                     const scoreProxy = this.event.facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy;
                     this.event.facade.sendNotification("SET_SCORE_VALUE_TransitionComponent", scoreProxy.GetScore);

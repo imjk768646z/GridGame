@@ -67,7 +67,6 @@ export class ReelControl extends Component {
     private _multipleSymbolPos: MultipleSymbolInfo[] = [];
     public set SetMultipleSymbolPos(data: MultipleSymbolInfo[]) {
         this._multipleSymbolPos = data;
-        console.log("! 等一下要關閉的倍數資訊:", this._multipleSymbolPos);
     }
 
     private totalSymbolToShowFrame = 0; //要顯示外框的symbol加總
@@ -203,7 +202,7 @@ export class ReelControl extends Component {
 
         Promise.all(multiPromises)
             .then(() => {
-                console.log("!! 所有移除圖標的動畫皆完成");
+                // 所有移除圖標的動畫皆完成
                 event.CallBack();
             })
             .catch((err) => { console.error(err); });
@@ -221,7 +220,7 @@ export class ReelControl extends Component {
 
         Promise.all(multiPromises)
             .then(() => {
-                console.log("所有圖標補足皆完成");
+                // 所有移除圖標的動畫皆完成
                 event.CallBack();
             })
             .catch((err) => { console.error(err); });

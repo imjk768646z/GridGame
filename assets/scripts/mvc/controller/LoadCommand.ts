@@ -4,7 +4,7 @@ import { SlotProxy } from "../model/SlotProxy";
 
 export class LoadCommand extends SimpleCommand {
     public execute(notification: INotification): void {
-        console.log("LoadCommand => ", notification);
+        // console.log("LoadCommand => ", notification);
         const LoadStateIns = notification.body;
         this.facade.registerProxy(new AssetsProxy(LoadStateIns));
 

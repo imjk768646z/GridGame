@@ -26,7 +26,6 @@ export class TransitionMediator extends Mediator {
                 this.transitionComponent.SetFGTotalRound = notification.body;
                 break;
             case "SET_SCORE_VALUE_TransitionComponent":
-                console.log("! Transition Score: ", notification.body)
                 this.transitionComponent.SetScoreToShow = notification.body;
                 break;
             default:

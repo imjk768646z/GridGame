@@ -55,7 +55,6 @@ export class BackgroundComponent extends Component {
     private _multiplePos: number[][] = [];
     /* public set SetMultipleInfo(data: MultipleInfo) {
         this._multipleInfo = data;
-        console.log("!設定倍數資訊");
     } */
 
     private _removeSymbolRule: RemoveSymbolRule = null;

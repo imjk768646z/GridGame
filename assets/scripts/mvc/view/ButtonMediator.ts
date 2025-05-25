@@ -14,7 +14,7 @@ export class ButtonMediator extends Mediator {
     }
 
     public onRegister(): void {
-        console.log("onRegister ButtonMediator, viewComponent:", this.buttonComponent);
+        // console.log("onRegister ButtonMediator, viewComponent:", this.buttonComponent);
     }
 
     // 列出該Mediator關心的Notification

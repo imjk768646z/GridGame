@@ -31,7 +31,6 @@ export class MultipleHandleState extends StateBase {
         if (multipleProxy.hasNextMultipleSymbol()) {
             this.event.fsm.go(GameState.MultipleHandle, fsmProxy.fsmEvent(GameFacade.MULTIPLE_HANDLE, SignalAction.NG.MultipleHandle));
         } else {
-            console.log("切換到NGShowWin 更新總分");
             this.event.fsm.go(GameState.NGShowWin, fsmProxy.fsmEvent(null, SignalAction.NG.Win));
         }
     }

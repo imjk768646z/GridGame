@@ -75,7 +75,7 @@ export class SlotProxy extends Proxy {
             },
             removeSymbolData: []
         }, */
-        <SlotFlow>{ //Round3 有消除
+        /* <SlotFlow>{ //Round3 有消除
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
                 updateReelData: [["H4", "N3", "N5", "N3", "H4"], ["N1", "N1", "H1", "H1", "N4"], ["N1", "N1", "N3", "N3", "H4"], ["H2", "N4", "N4", "N3", "N3"], ["N2", "H1", "H1", "N3", "N3"], ["N2", "N2", "H2", "H2", "N3"]],
@@ -85,7 +85,7 @@ export class SlotProxy extends Proxy {
                 //依照RemoveSymbolRule依序執行消除動畫
                 <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N2", "H3"], [], ["N2", "N2"], ["H3", "H2"], ["H4", "N2"], ["H1"]], removePos: [[2, 4], [], [3, 4], [4, 5], [4, 5], [5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
-        },
+        }, */
         /* <SlotFlow>{ //Round4
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
@@ -129,7 +129,7 @@ export class SlotProxy extends Proxy {
     ];
 
     private _FG_routineScript = [
-        <SlotFlow>{ //Round1
+        /* <SlotFlow>{ //Round1
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
                 updateReelData: [["H4", "H4", "N2", "N2", "N3"], ["H1", "S2", "H4", "H4", "N5"], ["N5", "N5", "N1", "N1", "N2"], ["N2", "N2", "N3", "N3", "N1"], ["N3", "N3", "H3", "H3", "N4"], ["N1", "H3", "H3", "N2", "N2"]],
@@ -243,7 +243,7 @@ export class SlotProxy extends Proxy {
                 multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
             },
             removeSymbolData: []
-        },
+        }, */
         <SlotFlow>{ //Round13
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{

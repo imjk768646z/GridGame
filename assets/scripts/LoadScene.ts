@@ -23,12 +23,10 @@ export class LoadScene extends Component {
     }
 
     private onLoading(event: ISignal) {
-        console.log("onLoading");
         event.CallBack();
     }
 
     private onLoadingSetting(event: ISignal) {
-        console.log("onLoadingSetting");
         event.CallBack();
     }
 

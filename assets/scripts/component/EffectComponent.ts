@@ -197,11 +197,8 @@ export class EffectComponent extends Component {
     }
 
     private onCoverMultiple(event: ISignal) {
-        console.log("! 將倍數擋在圖標的正上方", this._multipleSymbolPos);
-
         this._multipleSymbolPos.forEach(symbolPos => {
             const Position = this._symbolLocalPos[symbolPos.reelBarOrdinal - 1][symbolPos.symbolOrdinal - 1].clone();
-            console.log("將倍數顯示在:", Position);
             this._mMultiple.getComponent(Label).string = symbolPos.multiplText;
             this._mMultiple.setPosition(Position);
             this._mMultiple.active = true;
@@ -213,7 +210,6 @@ export class EffectComponent extends Component {
 
 
         /* const Position = this._symbolLocalPos[this._multipleSymbolPos.reelBarOrdinal - 1][this._multipleSymbolPos.symbolOrdinal - 1].clone();
-        console.log("將倍數顯示在:", Position);
         this._mMultiple.getComponent(Label).string = this._multipleSymbolPos.multiplText;
         this._mMultiple.setPosition(Position);
         this._mMultiple.active = true;

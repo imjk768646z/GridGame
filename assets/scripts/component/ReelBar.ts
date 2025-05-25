@@ -118,7 +118,6 @@ export class ReelBar extends Component {
 
         // this.initailReelBar();
         /* this.symbolNode = this.node.children;
-        // console.log("symbol index:", this.symbolNode.getSiblingIndex());
 
         // 記錄每一個圖標的位置
         const TopY = this.node.getComponent(UITransform).contentSize.height / 2;
@@ -309,7 +308,6 @@ export class ReelBar extends Component {
     }
 
     private onWriteTest(event: ISignal) {
-        console.log("onWriteTest 是否拿到資料:", this.testData);
         event.CallBack();
     }
 
@@ -317,7 +315,6 @@ export class ReelBar extends Component {
     public playSpin(newReel: number[][], callback?: Function) {
         this.getResult = callback;
         this.rolling();
-        // console.log("實際轉動滾輪 準備出現的滾輪資訊:", newReel);
         // this.isRolling = true;
         // this.symbolRolling();
         // this.setResultDate(["X", "Y", "Z"]);
@@ -447,7 +444,7 @@ export class ReelBar extends Component {
     }
 
     private onShowFrameComplete() {
-        console.log("顯示外框完畢");
+
     }
 
     public async removeSymbol() {
@@ -638,7 +635,6 @@ export class ReelBar extends Component {
         for (let i = 0; i < this.symbolNode.length; i++) {
             let symbolIns = this.symbolNode[i].getComponent(Symbol);
             if (this.isResult) {
-                // console.log(" 準備最終資料 index:", this.resultIndex)
                 symbolIns.rolling(rollingSpeed, this.nextReelDataIndex, this.resultIndex);
             } else {
                 symbolIns.rolling(rollingSpeed, this.nextReelDataIndex);

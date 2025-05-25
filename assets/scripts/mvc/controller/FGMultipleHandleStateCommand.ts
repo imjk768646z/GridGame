@@ -7,9 +7,6 @@ export class FGMultipleHandleStateCommand extends SimpleCommand {
     public execute(notification: INotification): void {
 
         const multipleProxy = this.facade.retrieveProxy(MultipleProxy.NAME) as MultipleProxy;
-
-        // console.log("取得倍數圖標位置:", multipleProxy.GetMultipleSymbolePos);
-
         const CurrentMultiple = multipleProxy.getCurrentMultiplePos();
         this.facade.sendNotification("SAVED_MULTIPLE_SYMBOL", CurrentMultiple);
 

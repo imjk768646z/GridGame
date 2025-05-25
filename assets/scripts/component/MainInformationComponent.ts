@@ -58,7 +58,6 @@ export class MainInformationComponent extends Component {
         let startNum = Number(this.winNumber.string);
         let endNum = this._scoreToShow;
         runScoreIns.runScoreTime(1, endNum, startNum, () => {
-            console.log("贏分 跑分結束");
             AudioEngineControl.getInstance().stopAudio();
             this.scheduleOnce(this.playAudioRunWinScoreEnd, 0);
             this.winNumber.string = Number(endNum).toFixed(2).toString();
@@ -72,7 +71,6 @@ export class MainInformationComponent extends Component {
 
     // 由動畫排程觸發
     private onUpdateCredit(event: ISignal) {
-        console.log("! 更新總分(餘額)");
         let originCredit = Number(this.creditNumber.string);
         let finalCredit = originCredit + this._scoreToShow;
         this.creditNumber.string = finalCredit.toFixed(2).toString();
@@ -92,7 +90,6 @@ export class MainInformationComponent extends Component {
     }
 
     public updateTotalBet(bet: number) {
-        console.log("! 目前的總投注:", bet);
         this.totalBetNumber.string = bet.toString();
     }
 
