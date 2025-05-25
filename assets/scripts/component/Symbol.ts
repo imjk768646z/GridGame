@@ -47,7 +47,8 @@ export class Symbol extends Component {
     }
 
     public reset() {
-        this.staticSymbol.node.active = true;
+        this.staticSymbol.node.active = false; //預設關閉，需要測試時才開啟
+        this.symbolID.node.active = false;     //預設關閉，需要測試時才開啟
         this.static.node.active = true;
         this.dynamic.node.active = false;
         this.frame.node.active = false;
@@ -107,6 +108,7 @@ export class Symbol extends Component {
     }
 
     public showDynamic(callback: Function, owner: object, dragonBonesParam: SymbolDragonBonesResult) {
+        this.static.node.active = false; //動態節點開啟時，靜態節點關閉
         this.dynamic.node.active = true;
         this.dynamic.dragonAsset = dragonBonesParam.dragonAsset;
         this.dynamic.dragonAtlasAsset = dragonBonesParam.dragonAtlasAsset;
@@ -117,6 +119,7 @@ export class Symbol extends Component {
     }
 
     public hideDynamic() {
+        this.static.node.active = true; //動態節點關閉時，靜態節點開啟
         this.dynamic.node.active = false;
     }
 
