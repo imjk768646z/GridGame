@@ -257,7 +257,6 @@ export class ReelControl extends Component {
     }
 
     public spinIn(resultReel: string[][]) {
-        AudioEngineControl.getInstance().playAudio(SoundList.SPININ, 1);
         this.reelBars.forEach((reelBar, index) => {
             this.scheduleOnce(() => {
                 // 給予最後一個滾輪回呼事件，當所有滾輪移出畫面後，使用回呼將滾輪轉入

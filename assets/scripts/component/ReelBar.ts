@@ -2,11 +2,12 @@ import { _decorator, Component, dragonBones, Label, Node, Prefab, Sprite, Sprite
 import { Symbol } from './Symbol';
 import { NodePoolManager } from '../singleton/NodePoolManager';
 import { ISignal } from './Signal';
-import { SignalType } from '../Definition';
+import { SignalType, SoundList } from '../Definition';
 import { AddSignal } from '../singleton/SignalManager';
 import { AssetsProperty } from '../mvc/controller/AssetsSavedCommand';
 import { MultipleInfo, RemoveSymbolRule } from '../mvc/model/SlotProxy';
 import { MultipleSymbolInfo } from '../mvc/model/MultipleProxy';
+import { AudioEngineControl } from '../singleton/AudioEngineControl';
 
 const { ccclass, property } = _decorator;
 
@@ -360,6 +361,7 @@ export class ReelBar extends Component {
             tween(this.symbolGroup)
                 .to(this.rollingSpeed, { position: new Vec3(0, 0, 0) })
                 .call(() => {
+                    if (this._reelBarId == 1) AudioEngineControl.getInstance().playAudio(SoundList.SPININ, 1); //第一個滾輪到達定位後才播放停止音效，其餘滾輪不用
                     if (this._reelBarId == lastID) this.finishCallback?.();
                 })
                 .start();
