@@ -71,13 +71,17 @@ export class TransitionComponent extends Component {
     }
 
     private onShowFGShowWin(event: ISignal) {
-        this.node.active = true;
-        this.fgShowWin.active = true;
-        this.fgShowWin.getChildByName("text").getChildByName("winScore").getComponent(Label).string = this._scoreToShow.toFixed(2);
-
+        // 延遲一秒再開啟贏分畫面，否則最後一局的盤面會來不及觀看
         setTimeout(() => {
-            event.CallBack();
-        }, 2000);
+            this.node.active = true;
+            this.fgShowWin.active = true;
+            this.fgShowWin.getChildByName("text").getChildByName("winScore").getComponent(Label).string = this._scoreToShow.toFixed(2);
+
+            // 讓玩家看清楚贏分後再關閉
+            setTimeout(() => {
+                event.CallBack();
+            }, 3000);
+        }, 1000);
     }
 
     private onCloseFGShowWin(event: ISignal) {
