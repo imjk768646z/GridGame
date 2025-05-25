@@ -23,10 +23,7 @@ export class GameScene extends Component {
     @property(ReelControl)
     private reelControl: ReelControl = null;
 
-    private spinButton: Node = null; //轉動按鈕
-    private stopButton: Node = null;
-    private removeButton: Node = null;
-    private testButton: Node = null;
+    private testButton: Node = null; //測試專用按鈕
     private reelBar: ReelBar = null; //滾輪
     private fsm: fsm.FiniteStateMachine<GameState> = null;
 
@@ -51,12 +48,7 @@ export class GameScene extends Component {
         // setTimeout(() => {
         //     this.symbol.playAnimation("play_A", 0);
         // }, 2000);
-        this.spinButton = this.node.getChildByName("Spin");
-
-        this.removeButton = this.node.getChildByName("Remove");
         this.testButton = this.node.getChildByName("Test");
-
-        this.removeButton.on(NodeEventType.TOUCH_START, this.onRemove, this);
         this.testButton.on(NodeEventType.TOUCH_START, this.onTest, this);
         // this.reelBar = this.node.getChildByName("ReelBar").getComponent(ReelBar);
         // this.reelBar.RollingCallBack = this.onReelRollingComplete.bind(this);
