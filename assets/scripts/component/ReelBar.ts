@@ -711,20 +711,20 @@ export interface SpriteInfo {
 
 // todo: 與參考圖片調整每個symbol尺寸
 export const SymbolSpriteSetting = {
-    "N1": <SpriteInfo>{ spriteName: "img_symbol_N1", scale: 0.8 },
-    "N2": <SpriteInfo>{ spriteName: "img_symbol_N2", scale: 0.5 },
-    "N3": <SpriteInfo>{ spriteName: "img_symbol_N3", scale: 0.5 },
-    "N4": <SpriteInfo>{ spriteName: "img_symbol_N4", scale: 0.5 },
-    "N5": <SpriteInfo>{ spriteName: "img_symbol_N5", scale: 0.5 },
-    "H1": <SpriteInfo>{ spriteName: "img_symbol_H1", scale: 0.5 },
-    "H2": <SpriteInfo>{ spriteName: "img_symbol_H2", scale: 0.5 },
-    "H3": <SpriteInfo>{ spriteName: "img_symbol_H3", scale: 0.5 },
-    "H4": <SpriteInfo>{ spriteName: "img_symbol_H4", scale: 0.5 },
-    "S1": <SpriteInfo>{ spriteName: "img_symbol_S1", scale: 0.5 },
-    "S2": <SpriteInfo>{ spriteName: "img_symbol_S2", scale: 0.5 },
-    "S3": <SpriteInfo>{ spriteName: "img_symbol_S3", scale: 0.5 },
-    "S4": <SpriteInfo>{ spriteName: "img_symbol_S4", scale: 0.5 },
-    "F": <SpriteInfo>{ spriteName: "img_symbol_F", scale: 0.5 },
+    "N1": <SpriteInfo>{ spriteName: "img_symbol_N1", scale: 1 },
+    "N2": <SpriteInfo>{ spriteName: "img_symbol_N2", scale: 1 },
+    "N3": <SpriteInfo>{ spriteName: "img_symbol_N3", scale: 1 },
+    "N4": <SpriteInfo>{ spriteName: "img_symbol_N4", scale: 1 },
+    "N5": <SpriteInfo>{ spriteName: "img_symbol_N5", scale: 1 },
+    "H1": <SpriteInfo>{ spriteName: "img_symbol_H1", scale: 0.8 },
+    "H2": <SpriteInfo>{ spriteName: "img_symbol_H2", scale: 0.8 },
+    "H3": <SpriteInfo>{ spriteName: "img_symbol_H3", scale: 0.8 },
+    "H4": <SpriteInfo>{ spriteName: "img_symbol_H4", scale: 0.8 },
+    "S1": <SpriteInfo>{ spriteName: "img_symbol_S1", scale: 0.8 },
+    "S2": <SpriteInfo>{ spriteName: "img_symbol_S2", scale: 0.8 },
+    "S3": <SpriteInfo>{ spriteName: "img_symbol_S3", scale: 0.8 },
+    "S4": <SpriteInfo>{ spriteName: "img_symbol_S4", scale: 0.8 },
+    "F": <SpriteInfo>{ spriteName: "img_symbol_F", scale: 0.8 },
 }
 
 export interface SymbolDragonBonesResult {
@@ -744,16 +744,16 @@ export interface DragonBoneInfo {
 }
 
 export const SymbolDragonBonesSetting = {
-    "N1": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_A", scale: 0.8 },
-    "N2": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_Q", scale: 0.8 },
-    "N3": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_TE", scale: 0.8 },
-    "N4": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_K", scale: 0.8 },
-    "N5": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_J", scale: 0.8 },
+    "N1": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_A", scale: 1 },
+    "N2": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_Q", scale: 1 },
+    "N3": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_TE", scale: 1 },
+    "N4": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_K", scale: 1 },
+    "N5": <DragonBoneInfo>{ dragonAsset: "symbolAKQJTE_ske", dragonAtlasAsset: "symbolAKQJTE_tex", armatureName: "symbolAKQJTE", animationName: "play_J", scale: 1 },
     "H1": <DragonBoneInfo>{ dragonAsset: "symbolM2_ske", dragonAtlasAsset: "symbolM2_tex", armatureName: "symbolM2", animationName: "play", scale: 0.8 },
     "H2": <DragonBoneInfo>{ dragonAsset: "symbolM3_ske", dragonAtlasAsset: "symbolM3_tex", armatureName: "symbolM3", animationName: "play", scale: 0.8 },
     "H3": <DragonBoneInfo>{ dragonAsset: "symbolM4_ske", dragonAtlasAsset: "symbolM4_tex", armatureName: "symbolM4", animationName: "play", scale: 0.8 },
     "H4": <DragonBoneInfo>{ dragonAsset: "symbolM1_ske", dragonAtlasAsset: "symbolM1_tex", armatureName: "symbolM1", animationName: "play", scale: 0.8 },
-    "S1": <DragonBoneInfo>{ dragonAsset: "symbolF1234_ske", dragonAtlasAsset: "symbolF1234_tex", armatureName: "symbolF1234", animationName: "play_F4", scale: 0.7 },
+    "S1": <DragonBoneInfo>{ dragonAsset: "symbolF1234_ske", dragonAtlasAsset: "symbolF1234_tex", armatureName: "symbolF1234", animationName: "play_F4", scale: 0.8 },
     "S2": <DragonBoneInfo>{ dragonAsset: "symbolF1234_ske", dragonAtlasAsset: "symbolF1234_tex", armatureName: "symbolF1234", animationName: "play_F1", scale: 0.8 },
     "S3": <DragonBoneInfo>{ dragonAsset: "symbolF1234_ske", dragonAtlasAsset: "symbolF1234_tex", armatureName: "symbolF1234", animationName: "play_F3", scale: 0.8 },
     "S4": <DragonBoneInfo>{ dragonAsset: "symbolF1234_ske", dragonAtlasAsset: "symbolF1234_tex", armatureName: "symbolF1234", animationName: "play_F2", scale: 0.8 }, //todo:還有play_F2_hit 之後再觀察運用時機
