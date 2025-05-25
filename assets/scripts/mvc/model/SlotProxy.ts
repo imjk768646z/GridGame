@@ -56,7 +56,7 @@ export class SlotProxy extends Proxy {
     private _baseReelData: string[][] = [["H2", "N4", "N4", "H3", "H3"], ["N4", "N4", "N1", "N1", "N2"], ["H3", "N1", "N1", "N4", "N4"], ["H3", "H2", "H2", "N2", "N2"], ["H4", "N2", "N2", "N3", "N3"], ["N1", "H2", "H2", "N2", "N2"]];
 
     private _NG_routineScript = [
-        /* <SlotFlow>{ //Round1 有消除 出現一個倍數(需處理)
+        <SlotFlow>{ //Round1 有消除 出現一個倍數(需處理)
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
                 updateReelData: [["N2", "N2", "H3", "H3", "N5"], ["H4", "N1", "N1", "N1", "N2"], ["N3", "N3", "H3", "H3", "N2"], ["H1", "N2", "N2", "H2", "H2"], ["N3", "N1", "N1", "S2", "N3"], ["N2", "N2", "N4", "N5", "F"]],
@@ -66,42 +66,15 @@ export class SlotProxy extends Proxy {
                 //依照RemoveSymbolRule依序執行消除動畫
                 <RemoveSymbolRule>{ score: 0.10, updateReelData: [["N1", "F"], ["H4"], ["N3"], ["N3", "H1"], [], ["H3", "H3"]], removePos: [[1, 2], [5], [5], [2, 3], [], [1, 2]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
-        }, */
-        /* <SlotFlow>{ //Round2 無消除 出現一個倍數(不處理)
+        },
+        <SlotFlow>{ //Round2 無消除 出現一個倍數(不處理)
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
                 updateReelData: [["N2", "N3", "N3", "H2", "H2"], ["H3", "S2", "N2", "N1", "N4"], ["F", "N4", "N4", "H3", "H3"], ["H1", "H2", "H2", "N5", "N5"], ["N4", "N4", "N1", "N1", "H3"], ["H2", "H2", "H3", "H3", "N1"]],
                 multipleInfo: <MultipleInfo>{ pos: [[], [2], [], [], [], []], text: [[], ["3x"], [], [], [], []] }
             },
             removeSymbolData: []
-        }, */
-        /* <SlotFlow>{ //Round3 有消除
-            fgInfo: { hasFG: false, score: 0 },
-            spinReelData: <SpinReelRule>{
-                updateReelData: [["H4", "N3", "N5", "N3", "H4"], ["N1", "N1", "H1", "H1", "N4"], ["N1", "N1", "N3", "N3", "H4"], ["H2", "N4", "N4", "N3", "N3"], ["N2", "H1", "H1", "N3", "N3"], ["N2", "N2", "H2", "H2", "N3"]],
-                multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
-            },
-            removeSymbolData: [
-                //依照RemoveSymbolRule依序執行消除動畫
-                <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N2", "H3"], [], ["N2", "N2"], ["H3", "H2"], ["H4", "N2"], ["H1"]], removePos: [[2, 4], [], [3, 4], [4, 5], [4, 5], [5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
-            ]
-        }, */
-        /* <SlotFlow>{ //Round4
-            fgInfo: { hasFG: false, score: 0 },
-            spinReelData: <SpinReelRule>{
-                updateReelData: [["H2", "N4", "N4", "H3", "H3"], ["N4", "N4", "N1", "N1", "N2"], ["H3", "N1", "N1", "N4", "N4"], ["H3", "H2", "H2", "N2", "N2"], ["H4", "N2", "N2", "N3", "N3"], ["N1", "H2", "H2", "N2", "N2"]],
-                multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
-            },
-            removeSymbolData: []
-        }, */
-        /* <SlotFlow>{ //Round5
-            fgInfo: { hasFG: false, score: 0 },
-            spinReelData: <SpinReelRule>{
-                updateReelData: [["N4", "H2", "H2", "N5", "N5"], ["N1", "N1", "N1", "N2", "H3"], ["H4", "H4", "N2", "N2", "F"], ["N5", "N3", "N3", "N2", "F"], ["H4", "H4", "N2", "N2", "H1"], ["H1", "N1", "N1", "H3", "H3"]],
-                multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
-            },
-            removeSymbolData: []
-        }, */
+        },
         <SlotFlow>{ //進入FG
             fgInfo: { hasFG: true, score: 0.60 },
             spinReelData: <SpinReelRule>{
@@ -114,6 +87,33 @@ export class SlotProxy extends Proxy {
                 // <RemoveSymbolRule>{ score: 0.5, updateReelData: [["H2", "H3"], ["S2"]], removePos: [[2, 5], [2]], multipleInfo: <MultipleInfo>{ pos: [[], [1]], text: [[], ["2x"]] } },
             ]
         },
+        <SlotFlow>{ //Round3 有消除
+            fgInfo: { hasFG: false, score: 0 },
+            spinReelData: <SpinReelRule>{
+                updateReelData: [["H4", "N3", "N5", "N3", "H4"], ["N1", "N1", "H1", "H1", "N4"], ["N1", "N1", "N3", "N3", "H4"], ["H2", "N4", "N4", "N3", "N3"], ["N2", "H1", "H1", "N3", "N3"], ["N2", "N2", "H2", "H2", "N3"]],
+                multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
+            },
+            removeSymbolData: [
+                //依照RemoveSymbolRule依序執行消除動畫
+                <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N2", "H3"], [], ["N2", "N2"], ["H3", "H2"], ["H4", "N2"], ["H1"]], removePos: [[2, 4], [], [3, 4], [4, 5], [4, 5], [5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
+            ]
+        },
+        <SlotFlow>{ //Round4
+            fgInfo: { hasFG: false, score: 0 },
+            spinReelData: <SpinReelRule>{
+                updateReelData: [["H2", "N4", "N4", "H3", "H3"], ["N4", "N4", "N1", "N1", "N2"], ["H3", "N1", "N1", "N4", "N4"], ["H3", "H2", "H2", "N2", "N2"], ["H4", "N2", "N2", "N3", "N3"], ["N1", "H2", "H2", "N2", "N2"]],
+                multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
+            },
+            removeSymbolData: []
+        },
+        <SlotFlow>{ //Round5
+            fgInfo: { hasFG: false, score: 0 },
+            spinReelData: <SpinReelRule>{
+                updateReelData: [["N4", "H2", "H2", "N5", "N5"], ["N1", "N1", "N1", "N2", "H3"], ["H4", "H4", "N2", "N2", "F"], ["N5", "N3", "N3", "N2", "F"], ["H4", "H4", "N2", "N2", "H1"], ["H1", "N1", "N1", "H3", "H3"]],
+                multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
+            },
+            removeSymbolData: []
+        },
         // <SlotFlow>{
         //     spinReelData: <SpinReelRule>{
         //         updateReelData: [["N2", "N3", "S4", "F", "H1"], ["H2", "H3", "H4", "N1", "N2"]],
@@ -124,12 +124,10 @@ export class SlotProxy extends Proxy {
         //         <RemoveSymbolRule>{ updateReelData: [["H2", "H3"], ["S2"]], removePos: [[3, 5], [2]], multipleInfo: <MultipleInfo>{ pos: [[0], [1]], text: [[""], ["2x"]] } },
         //     ]
         // },
-        // <SlotFlow>{},
-        // <SlotFlow>{},
     ];
 
     private _FG_routineScript = [
-        /* <SlotFlow>{ //Round1
+        <SlotFlow>{ //Round1
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
                 updateReelData: [["H4", "H4", "N2", "N2", "N3"], ["H1", "S2", "H4", "H4", "N5"], ["N5", "N5", "N1", "N1", "N2"], ["N2", "N2", "N3", "N3", "N1"], ["N3", "N3", "H3", "H3", "N4"], ["N1", "H3", "H3", "N2", "N2"]],
@@ -205,8 +203,8 @@ export class SlotProxy extends Proxy {
             },
             removeSymbolData: [
                 //依照RemoveSymbolRule依序執行消除動畫
-                <RemoveSymbolRule>{ score: 0.08, updateReelData: [["H1","N3"], [], ["N3","N3"], [], ["H1","N2"], ["H4","N4"]], removePos: [[2,3], [], [1,2], [], [2,3], [2,3]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
-                <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N5","H1"], ["H1"], ["H3","H3"], ["H3","H3"], ["H1","H1"], []], removePos: [[2,3], [5], [1,2], [3,4], [4,5], []], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
+                <RemoveSymbolRule>{ score: 0.08, updateReelData: [["H1", "N3"], [], ["N3", "N3"], [], ["H1", "N2"], ["H4", "N4"]], removePos: [[2, 3], [], [1, 2], [], [2, 3], [2, 3]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
+                <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N5", "H1"], ["H1"], ["H3", "H3"], ["H3", "H3"], ["H1", "H1"], []], removePos: [[2, 3], [5], [1, 2], [3, 4], [4, 5], []], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
         },
         <SlotFlow>{ //Round9
@@ -225,7 +223,7 @@ export class SlotProxy extends Proxy {
             },
             removeSymbolData: [
                 //依照RemoveSymbolRule依序執行消除動畫
-                <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N5","H4"], [], ["N4"], [], ["H4","N2"], ["H2","H2","N1"]], removePos: [[3,4], [], [5], [], [2,3], [3,4,5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
+                <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N5", "H4"], [], ["N4"], [], ["H4", "N2"], ["H2", "H2", "N1"]], removePos: [[3, 4], [], [5], [], [2, 3], [3, 4, 5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
         },
         <SlotFlow>{ //Round11
@@ -243,7 +241,7 @@ export class SlotProxy extends Proxy {
                 multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] }
             },
             removeSymbolData: []
-        }, */
+        },
         <SlotFlow>{ //Round13
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
@@ -252,7 +250,7 @@ export class SlotProxy extends Proxy {
             },
             removeSymbolData: [
                 //依照RemoveSymbolRule依序執行消除動畫
-                <RemoveSymbolRule>{ score: 1.20, updateReelData: [["N3","N2","N1","H2","N5"], ["N5","N5","N2","H2","N1"], ["N4","N2","N4","N4"], ["N4","H2","H4","H4"], ["H4","N3","H4","N5","N5"], ["N5","H1","N2","H1","N2"]], removePos: [[1,2,3,4,5], [1,2,3,4,5], [1,2,4,5], [1,2,4,5], [1,2,3,4,5], [1,2,3,4,5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
+                <RemoveSymbolRule>{ score: 1.20, updateReelData: [["N3", "N2", "N1", "H2", "N5"], ["N5", "N5", "N2", "H2", "N1"], ["N4", "N2", "N4", "N4"], ["N4", "H2", "H4", "H4"], ["H4", "N3", "H4", "N5", "N5"], ["N5", "H1", "N2", "H1", "N2"]], removePos: [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 4, 5], [1, 2, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
         },
         <SlotFlow>{ //Round14
@@ -263,7 +261,7 @@ export class SlotProxy extends Proxy {
             },
             removeSymbolData: [
                 //依照RemoveSymbolRule依序執行消除動畫
-                <RemoveSymbolRule>{ score: 10.24, updateReelData: [["H1","N3","N3","N1","N1"], ["N3","F","H4","H4","N4"], ["N3","N2","N2","H2"], ["N4","N4","N5","H3"], ["N1","N4","H1","N3","H3"], ["H2","H2","N4","N4","N4"]], removePos: [[1,2,3,4,5], [1,2,3,4,5], [1,2,4,5], [1,2,4,5], [1,2,3,4,5], [1,2,3,4,5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
+                <RemoveSymbolRule>{ score: 10.24, updateReelData: [["H1", "N3", "N3", "N1", "N1"], ["N3", "F", "H4", "H4", "N4"], ["N3", "N2", "N2", "H2"], ["N4", "N4", "N5", "H3"], ["N1", "N4", "H1", "N3", "H3"], ["H2", "H2", "N4", "N4", "N4"]], removePos: [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 4, 5], [1, 2, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
         },
         <SlotFlow>{ //Round15
@@ -278,19 +276,6 @@ export class SlotProxy extends Proxy {
                 <RemoveSymbolRule>{ score: 0.50, updateReelData: [["H3", "H3", "N5"], [], ["N3", "H3"], [], [], ["H4", "N2", "N2"]], removePos: [[1, 2, 5], [], [4, 5], [], [], [2, 3, 4]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
         },
-        /* <SlotFlow>{
-            spinReelData: <SpinReelRule>{
-                updateReelData: [["N2", "N2", "N2", "N2", "N2"], ["H4", "H4", "H4", "H4", "H4"], ["N3", "N3", "N3", "N3", "N3"], ["H1", "H1", "H1", "H1", "H1"], ["N2", "S2", "N2", "N2", "N2"], ["N4", "N4", "N4", "N4", "N4"]],
-                multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [2], []], text: [[], [], [], [], ["10x"], []] }
-            },
-            removeSymbolData: [
-                //依照RemoveSymbolRule依序執行消除動畫
-                <RemoveSymbolRule>{ score: 2.00, updateReelData: [["H2"], [], ["S3"], [], ["N4"], []], removePos: [[3], [], [4], [], [5], []], multipleInfo: <MultipleInfo>{ pos: [[], [], [1], [], [], []], text: [[], [], ["20x"], [], [], []] } },
-                // 第一三五個滾輪消除 並且出現倍數圖標
-                // <RemoveSymbolRule>{ score: 2.00, updateReelData: [["H2"], [], ["S3"], [], ["N4"], []], removePos: [[3], [], [4], [], [5], []], multipleInfo: <MultipleInfo>{ pos: [[], [], [1], [], [], []], text: [[], [], ["100x"], [], [], []] } },
-                // <RemoveSymbolRule>{ score: 0.5, updateReelData: [["H2", "H3"], ["S2"]], removePos: [[2, 5], [2]], multipleInfo: <MultipleInfo>{ pos: [[], [1]], text: [[], ["2x"]] } },
-            ]
-        }, */
     ];
 
     // 假設有兩個滾輪，但沒有任何倍數資訊
