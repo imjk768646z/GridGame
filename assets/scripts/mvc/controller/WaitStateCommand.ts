@@ -4,7 +4,6 @@ import { MultipleInfo, RemoveSymbolRule, SlotProxy } from "../model/SlotProxy";
 
 export class WaitStateCommand extends SimpleCommand {
     public execute(notification: INotification): void {
-        //todo: 重置ScoreProxy所有資料
         const scoreProxy = this.facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy;
         scoreProxy.reset();
         this.facade.sendNotification("RESET");

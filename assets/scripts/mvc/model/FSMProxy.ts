@@ -135,8 +135,4 @@ export interface IFSMEvent {
      * PureMVC核心
      */
     facade: Facade;
-    /**
-     * 畫面控制
-     */
-    // view: ViewSystem; //todo: 加入ViewSystem
 }

@@ -120,7 +120,6 @@ export enum SignalType {
     ShowSymbolEliminate,       //顯示消除動畫
     ShowEliminateScore,        //顯示消除贏分
     CloseEliminateScore,       //關閉消除贏分
-    AdditionEliminateScore,          //計算消除贏分(加上前一個分數) //todo: 這個沒用到可以刪除
     MultiplicationEliminateScore,    //計算消除贏分(乘以倍數)
     RunEliminateScore,         //消除贏分跑分(NG階段)
     RunEliminateScoreFGState,  //消除贏分跑分(FG階段)
@@ -294,7 +293,7 @@ export const SignalAction = {
             [SignalType.ShowLuBuFire]
         ],
         "Remove": [
-            [SignalType.ShowEliminateScore, SignalType.AdditionEliminateScore, SignalType.ShowSymbolFrame, SignalType.ShowSymbolDynamic, SignalType.ShowMultipleOnReel, SignalType.RunEliminateScore, SignalType.RunWinScore],
+            [SignalType.ShowEliminateScore, SignalType.ShowSymbolFrame, SignalType.ShowSymbolDynamic, SignalType.ShowMultipleOnReel, SignalType.RunEliminateScore, SignalType.RunWinScore],
             [SignalType.ShowSymbolEliminate],
             [SignalType.RemoveSymbol, SignalType.FillSymbol, SignalType.ShowLuBuFire, SignalType.ShowFireBall, SignalType.UpdateMultipleText],
         ],
@@ -356,7 +355,7 @@ export const SignalAction = {
             [SignalType.CloseTriggerText, SignalType.ShowRoundText, SignalType.ShowFGRound]
         ],
         "Remove": [
-            [SignalType.ShowEliminateScore, SignalType.AdditionEliminateScore, SignalType.ShowSymbolFrame, SignalType.ShowSymbolDynamic, SignalType.ShowMultipleOnReel, SignalType.RunEliminateScoreFGState, SignalType.RunWinScore],
+            [SignalType.ShowEliminateScore, SignalType.ShowSymbolFrame, SignalType.ShowSymbolDynamic, SignalType.ShowMultipleOnReel, SignalType.RunEliminateScoreFGState, SignalType.RunWinScore],
             [SignalType.ShowSymbolEliminate],
             [SignalType.RemoveSymbol, SignalType.FillSymbol, SignalType.ShowLuBuFire, SignalType.ShowFireBall, SignalType.UpdateMultipleText],
         ],

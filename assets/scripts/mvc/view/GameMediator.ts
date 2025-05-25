@@ -8,7 +8,6 @@ export class GameMediator extends Mediator {
     public static NAME: string = "GameMediator";
     // private spinButton: Node = null;
     private reelControl: ReelControl = null;
-    // todo: 新增成員變數 所有GameScene的子節點腳本
     private reelBars: ReelBar[] = null;
     constructor(viewComponent?: any) {
         super(GameMediator.NAME, viewComponent);

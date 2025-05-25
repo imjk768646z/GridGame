@@ -22,7 +22,6 @@ export class FGFeaturePlayState extends StateBase {
         const hasFGRemoveInfo = slotProxy.hasFGRemoveInfo();
         if (hasFGRemoveInfo) {
             //切換到消除狀態
-            // todo: 新增FGRemoveStateCommand
             event.fsm.go(GameState.FGRemove, fsmProxy.fsmEvent(GameFacade.FGREMOVE, SignalAction.FG.Remove));
             return;
         }

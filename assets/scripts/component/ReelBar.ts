@@ -15,7 +15,7 @@ export type SymbolParam = {
     symbolHeight: number,
     symbolWidth: number,
     symbolId: number,
-    rollingDistance: number, //todo: 考慮刪除
+    rollingDistance: number,
     rollingCallback: Function,
     symbolPosition: Vec3[],
     reelData: string[],
@@ -46,7 +46,8 @@ export class ReelBar extends Component {
     private rollingSymbolMinimumCount: number = 6; //這個變數由最外層ReelControl設定比較好 因為每個滾輪需要轉動的Symbol數量不一樣
     private rolledSymbolCount: number = 0; //已滾動的symbol數量
     private isQuickStop: boolean = false;
-    private rollingSpeed: number = 0.7;
+    private rollingSpeed: number = 0.6; //滾輪轉動速度(意旨SymbolGroup)
+    private fallingSpeed: number = 0.2; //圖標掉落速度(意旨Symbol)
     private rollingTempo: number[] = [0.4, 0.8];
     private fakeReelData: string[] = ["A", "B", "C", "D", "E", "F", "G", "H",];
     private _baseReelData: string[] = [];
@@ -59,11 +60,6 @@ export class ReelBar extends Component {
     private _reelBarId: number;
 
     private _removeSymbolData: number[] = null; //依照該陣列刪除symbol節點
-
-    public set SetRemoveInfo(data: number[]) {
-        this._removeSymbolData = data;
-        console.log(`我是第${this._reelBarId}個ReelBar, 移除的資訊:${this._removeSymbolData}`);
-    }
 
     private _updateReelData: string[] = [];
     private _removePos: number[] = [];
@@ -270,21 +266,8 @@ export class ReelBar extends Component {
         }, 2000); */
     }
 
-    // todo:轉入前先將滾輪結果更新
     public spinIn(lastOrder: number, data?: string[]) {
-        //todo: 要依照symbolID的順序塞值 而不是直接用symbolGroup的順序
-        /* this.symbolGroup.children.forEach((node, index) => {
-            console.log("! Symbol Name:", data[index], "ReelBar:", this._reelBarId);
-            node.getChildByName("StaticSymbol").getComponent(Label).string = data[index];
-
-            const SpriteParam = this.getSymbolSprite(data[index]);
-            let symbolIns = node.getComponent(Symbol);
-            symbolIns.SetSymbolName = data[index];
-            node.getChildByName("Static").getComponent(Sprite).spriteFrame = SpriteParam.spriteFrame;
-            node.getChildByName("Static").scale = SpriteParam.scale;
-        }) */
-
-        // 要依照symbolId的順序塞值，data陣列的索引值+1是為了符合symbolId規則，因為symbolId最小從1開始
+        // 依照symbolId的順序塞值，data陣列的索引值+1是為了符合symbolId規則，因為symbolId最小從1開始
         data.forEach((name, idx) => {
             this.symbolGroup.children.forEach((node, index) => {
                 let symbolIns = node.getComponent(Symbol);
@@ -373,20 +356,7 @@ export class ReelBar extends Component {
     // 更新SymbolGroup位置
     private updateSymbolGroupPos() {
         if (this.symbolGroup.position.y === 0) return;
-
         this.symbolGroup.setPosition(this.topOuterSymbolPos);
-        // this.scheduleOnce(this.rolling, 0.5); //todo: 必須確認已拿到資料 才能讓新的滾輪結果從上方移動至畫面中
-    }
-
-    public StopSpin() {
-        this.isQuickStop = true;
-        this.isResult = true;
-        this.resultIndex = 0;
-        this.rollingRestOfSymbols = this.symbolCountFOV; //急停時還要滾動的次數
-        for (let i = 0; i < this.symbolNode.length; i++) {
-            let symbolIns = this.symbolNode[i].getComponent(Symbol);
-            symbolIns.stopRolling(this.resultIndex);
-        }
     }
 
     public showFrame(callback: Function, owner: object) {
@@ -521,8 +491,7 @@ export class ReelBar extends Component {
             if (symbolCount != 0) { //symbolCount不為0代表ID值改變過，需要做掉落處理，如果為0代表ID值沒有改變，不須做任何移動
                 const p = new Promise<Node>(resolve => {
                     tween(node)
-                        // todo:速度要再調整 盡量利用全域變數控制 或是進入tween之前使用switch case選擇相應的速度
-                        .to(0.2, { position: this.symbolPosition[symbolIns.getSymbolId] })
+                        .to(this.fallingSpeed, { position: this.symbolPosition[symbolIns.getSymbolId] })
                         .call(() => {
                             this.specificSymbolBounce(symbolIns.getSymbolId);
                             resolve(node);
@@ -595,11 +564,9 @@ export class ReelBar extends Component {
 
             const p = new Promise<Node>(resolve => {
                 tween(symbol)
-                    // todo:速度要再調整 盡量利用全域變數控制 或是進入tween之前使用switch case選擇相應的速度
                     // .to(Math.abs(symbolCount - (this.symbolCountFOV + 1)) * 0.3, { position: this.symbolPosition[symbolIns.getSymbolId] })
-                    .to(0.2, { position: this.symbolPosition[symbolIns.getSymbolId] })
+                    .to(this.fallingSpeed, { position: this.symbolPosition[symbolIns.getSymbolId] })
                     .call(() => {
-                        // todo: 補上回彈效果
                         this.specificSymbolBounce(symbolIns.getSymbolId);
                         resolve(symbol);
                     })

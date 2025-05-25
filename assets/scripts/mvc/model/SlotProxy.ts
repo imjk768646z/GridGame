@@ -13,7 +13,7 @@ export interface MultipleRule {
 }
 
 export interface SlotFlow {
-    fgInfo: FreeGameInfo; //todo: 新增一個介面專門記錄FG的訊息 例:有無FG、分數(要給予正確的分數，例如出現四個F圖標總共是3分，之後要乘以總投注假設0.2，因此最終贏分要顯示0.60)
+    fgInfo: FreeGameInfo;
     spinReelData: SpinReelRule;
     removeSymbolData: RemoveSymbolRule[];
 }
@@ -48,7 +48,6 @@ export class SlotProxy extends Proxy {
 
     constructor() {
         super(SlotProxy.NAME);
-        this.initReels();
     }
 
     public static NAME: string = "SlotProxy";
@@ -57,7 +56,6 @@ export class SlotProxy extends Proxy {
     private _baseReelData: string[][] = [["H2", "N4", "N4", "H3", "H3"], ["N4", "N4", "N1", "N1", "N2"], ["H3", "N1", "N1", "N4", "N4"], ["H3", "H2", "H2", "N2", "N2"], ["H4", "N2", "N2", "N3", "N3"], ["N1", "H2", "H2", "N2", "N2"]];
 
     private _NG_routineScript = [
-        //todo: 如果有FG 盤面必須給FG圖標的所在位置
         /* <SlotFlow>{ //Round1 有消除 出現一個倍數(需處理)
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
@@ -77,7 +75,7 @@ export class SlotProxy extends Proxy {
             },
             removeSymbolData: []
         }, */
-        /* <SlotFlow>{ //Round3 有消除
+        <SlotFlow>{ //Round3 有消除
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
                 updateReelData: [["H4", "N3", "N5", "N3", "H4"], ["N1", "N1", "H1", "H1", "N4"], ["N1", "N1", "N3", "N3", "H4"], ["H2", "N4", "N4", "N3", "N3"], ["N2", "H1", "H1", "N3", "N3"], ["N2", "N2", "H2", "H2", "N3"]],
@@ -87,7 +85,7 @@ export class SlotProxy extends Proxy {
                 //依照RemoveSymbolRule依序執行消除動畫
                 <RemoveSymbolRule>{ score: 0.05, updateReelData: [["N2", "H3"], [], ["N2", "N2"], ["H3", "H2"], ["H4", "N2"], ["H1"]], removePos: [[2, 4], [], [3, 4], [4, 5], [4, 5], [5]], multipleInfo: <MultipleInfo>{ pos: [[], [], [], [], [], []], text: [[], [], [], [], [], []] } },
             ]
-        }, */
+        },
         /* <SlotFlow>{ //Round4
             fgInfo: { hasFG: false, score: 0 },
             spinReelData: <SpinReelRule>{
@@ -416,7 +414,7 @@ export class SlotProxy extends Proxy {
         return this._NG_curRoutine.fgInfo.hasFG;
     }
 
-    // todo:這邊就應該判斷好有沒有消除資訊 並且返回正確的訊息
+    // 判斷有沒有消除資訊，並且返回正確的訊息
     public hasRemoveInfo(): boolean {
         // return this._curRoutine.removeInfo;
         return this._NG_curRoutine.removeSymbolData.length > 0;
@@ -496,11 +494,6 @@ export class SlotProxy extends Proxy {
         return this.isFGRoundEnd;
     }
 
-    // todo: 將固定盤面以及新產生的滾輪訊息寫在該腳本 以及消除那些圖標 消除後產生那些圖標
-    public initReels() {
-
-    }
-
     /* public startSpin(): number[][] {
         console.log("start spin 提供下一次轉動時的圖標資訊");
         return this.reels;
@@ -567,7 +560,6 @@ export class SlotProxy extends Proxy {
         })
     }
 
-    // todo: FGComplete時呼叫
     public resetFG() {
         if (this.fgMainIndex == this._FG_routineScript.length) {
             this.isFGRoundEnd = false;

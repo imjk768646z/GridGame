@@ -150,25 +150,12 @@ export class LoadState extends StateBase {
                 if (func) {
                     // this.loadingMsg.string = msg;
                     // this.progressBar.progress = this.funcsIdx / this.funcs.length;
-                    // todo: 將progress計算結果放在參數傳遞給Mediator
                     const progress = this.funcsIdx / this.funcs.length;
                     const body = { progress: progress, msg: msg };
                     this.event.facade.sendNotification("UPDATE_PROGRESS", body);
                     await func();
                 }
-
             }
-        } else {
-            // 資源載入完成，關閉該節點
-            // this.node.active = false;
-            // this.event.facade.sendNotification("LOADING_END"); //這裡不用通知的方式關閉節點
-
-
-            //todo: 切換狀態機到INIT 觸發動畫完成後續事件
-            //切換之前先執行InitCommand 設定初始化該具備的資料 例如:滾輪
-            // const fsmProxy = this.event.facade.retrieveProxy(FSMProxy.NAME) as FSMProxy;
-            // console.log("切換到INIT狀態")
-            // this.event.fsm.go(GameState.Init, fsmProxy.fsmEvent(SignalAction.NG.Init));
         }
     }
 

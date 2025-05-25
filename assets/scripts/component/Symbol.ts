@@ -148,22 +148,6 @@ export class Symbol extends Component {
             .start();
     }
 
-    stopRolling(dataIndex: number) {
-        this.tweenIns.stop();
-
-        // console.log("! next index:", (this.symbolId + 1) % 4);
-
-        // 將Symbol移動到下一個正確的位置
-        const NextSymbolId = (this.symbolId + 1) % 5; //其中5是可視範圍symbol數 加上上下各一顆 todo:由ReelBar將參數設定過來
-
-        tween(this.node)
-            .to(0.1, { position: this.allSymbolPostion[NextSymbolId] }) //todo: 速度需要再調整
-            .call(() => {
-                this.updatePosition(dataIndex, true);
-            })
-            .start();
-    }
-
     bounce() {
         tween(this.node)
             .by(0.1, { position: new Vec3(0, -15, 0) })

@@ -36,7 +36,6 @@ export class WaitState extends StateBase {
         // event.facade.sendNotification("WRITE", st);
 
 
-        //todo: wait狀態僅切換狀態機 不做滾輪旋轉 下一個狀態才呼叫旋轉 這裡所做的事情都將移至NGBeforeSpin
         //各個狀態腳本都藉由event獲取facade 再利用sendNotification和retrieveXXX拿到相關代理和執行命令
     }
 

@@ -46,17 +46,6 @@ export class ReelControl extends Component {
         });
     }
 
-    private _testRemoveInfo;
-    public set SetRemoveInfo(data: RemoveRule) {
-        this._testRemoveInfo = data;
-        this._removeSymbolData = data.removePos;
-        console.log("!! 在ReelControl收到消除的資訊:", this._removeSymbolData);
-        // todo:將消除資訊給每個滾輪
-        this.reelBars.forEach((reelbar, index) => {
-            reelbar.SetRemoveInfo = data.removePos[index];
-        });
-    }
-
     private _removeSymbolRule: RemoveSymbolRule = null;
     public set SetRemoveSymbolRule(data: RemoveSymbolRule) {
         this._removeSymbolRule = data;
@@ -292,7 +281,6 @@ export class ReelControl extends Component {
     }
 
     public spinStop() {
-        console.log("取消每一個滾輪的tween 重新派送");
         //todo: 取消每一個滾輪的tween 重新派送tween
     }
 

@@ -6,7 +6,6 @@ import { MultipleInfo, RemoveSymbolRule, SlotProxy } from "../model/SlotProxy";
 export class FGMultipleHandleStateCommand extends SimpleCommand {
     public execute(notification: INotification): void {
 
-        // this.facade.sendNotification("SEARCH_MULTIPLE_SYMBOL"); //todo:想辦法讓這裡只執行一次
         const multipleProxy = this.facade.retrieveProxy(MultipleProxy.NAME) as MultipleProxy;
 
         // console.log("取得倍數圖標位置:", multipleProxy.GetMultipleSymbolePos);

@@ -34,10 +34,6 @@ export class FGRemoveState extends StateBase {
         } else {
             if (slotProxy.hasFGMultipleInfo()) {
                 console.log("切換狀態機 處理倍數移動");
-                //todo: 嘗試從slotProxy取得所有倍數的位置 內容必須是MultipleSymbolInfo 再寫入MultipleProxy
-                /* console.log("!! 切換倍數處理之前 所有的倍數資訊:",slotProxy.GetAllMultipleSymbolInfo);
-                const multipleProxy = this.event.facade.retrieveProxy(MultipleProxy.NAME) as MultipleProxy;
-                multipleProxy.SetMultipleSymbol = slotProxy.GetAllMultipleSymbolInfo; */
                 this.event.facade.sendNotification("SEARCH_MULTIPLE_SYMBOL"); //進入MultipleHandle之前只會執行一次(注意:只能呼叫一次)
                 this.event.fsm.go(GameState.FGMultipleHandle, fsmProxy.fsmEvent(GameFacade.FGMULTIPLE_HANDLE, SignalAction.FG.MultipleHandle));
             } else {

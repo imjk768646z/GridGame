@@ -14,7 +14,7 @@ export class FGRemoveStateCommand extends SimpleCommand {
         this.facade.sendNotification("SET_BET_MULTIPLE", betProxy.GetCurrentBetMultiple);
 
         // 取出removeSymbolRule裡面的score 將它存放到ScoreProxy
-        // todo: ScoreProxy要使用FG流程專屬的用法
+        // 使用FG專屬的方式處理ScoreProxy
         if (removeSymbolRule != null) {
             const scoreProxy = this.facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy;
             scoreProxy.SetScoreFGState = removeSymbolRule.score;

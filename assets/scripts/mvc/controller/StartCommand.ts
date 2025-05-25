@@ -21,6 +21,7 @@ import { ButtonMediator } from "../view/ButtonMediator";
  */
 export class StartCommand extends SimpleCommand {
     public execute(notification: INotification): void {
+        // 註冊代理與中介
         this.facade.registerProxy(new SlotProxy());
         this.facade.registerProxy(new MultipleProxy());
         this.facade.registerProxy(new ScoreProxy());
@@ -29,7 +30,7 @@ export class StartCommand extends SimpleCommand {
         const Main = notification.body;
         this.facade.registerProxy(new FSMProxy(Main));
         this.facade.registerMediator(new LoadMediator(Main.loadScene));
-        this.facade.registerMediator(new GameMediator(Main.gameScene)); //todo: 將gameScene當作建構子的參數
+        this.facade.registerMediator(new GameMediator(Main.gameScene));
         this.facade.registerMediator(new BackgroundMediator(Main.backgroundComponent));
         this.facade.registerMediator(new EffectMediator(Main.effectComponent));
         this.facade.registerMediator(new EliminateScoreMediator(Main.eliminateScoreComponent));
@@ -38,6 +39,5 @@ export class StartCommand extends SimpleCommand {
         this.facade.registerMediator(new ButtonMediator(Main.buttonComponent));
         // this.facade.registerMediator(new GameMediator(gameScene.SpinButton));
         // this.facade.registerMediator(new ReelBarMediator(gameScene.ReelBarInstance));
-        // todo: 需註冊按鈕和滾輪實例 但不一定完全按照上面的作法
     }
 }

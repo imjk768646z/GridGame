@@ -21,7 +21,7 @@ export class InitState extends StateBase {
 
     call(): void {
         console.log("動畫結束");
-        //todo: 切換到WaitState
+        //切換到WaitState
         const fsmProxy = this.event.facade.retrieveProxy(FSMProxy.NAME) as FSMProxy;
         this.event.fsm.go(GameState.Wait, fsmProxy.fsmEvent());
     }

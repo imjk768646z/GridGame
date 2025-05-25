@@ -103,7 +103,7 @@ export class EffectComponent extends Component {
         this._multipleSymbolPos = data;
     } */
 
-    // todo:要依照滾輪的順序 延遲播放火球特效
+    // 由GameFacade呼叫
     public playFireBall(pos: number[][]) {
         AudioEngineControl.getInstance().playAudio(SoundList.FireBall, 1);
         pos.forEach((ps, index) => {
@@ -131,6 +131,7 @@ export class EffectComponent extends Component {
         this.fireBallStore.splice(0, this.fireBallStore.length); //清空陣列
     }
 
+    // 由動畫排程呼叫
     private onShowFireBall(event: ISignal) {
         // 倍數位置有內容時，代表要顯示火球特效
         const isShowFireBall = this._multiplePos.some(pos => pos.length > 0);

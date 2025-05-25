@@ -23,8 +23,6 @@ export class GameScene extends Component {
     @property(ReelControl)
     private reelControl: ReelControl = null;
 
-    // todo: 新增成員變數 所有GameScene的子節點腳本
-
     private spinButton: Node = null; //轉動按鈕
     private stopButton: Node = null;
     private removeButton: Node = null;
@@ -57,10 +55,10 @@ export class GameScene extends Component {
         //     this.symbol.playAnimation("play_A", 0);
         // }, 2000);
         this.spinButton = this.node.getChildByName("Spin");
-        this.stopButton = this.node.getChildByName("Stop");
+
         this.removeButton = this.node.getChildByName("Remove");
         this.testButton = this.node.getChildByName("Test");
-        this.stopButton.on(NodeEventType.TOUCH_START, this.onStop, this);
+
         this.removeButton.on(NodeEventType.TOUCH_START, this.onRemove, this);
         this.testButton.on(NodeEventType.TOUCH_START, this.onTest, this);
         // this.reelBar = this.node.getChildByName("ReelBar").getComponent(ReelBar);
@@ -75,10 +73,6 @@ export class GameScene extends Component {
         // this.gameFacade.startup(this);
 
         // AddSignal(SignalType.Test, this.onTestSignal.bind(this));
-    }
-
-    onStop() {
-        this.reelBar.StopSpin();
     }
 
     onRemove() {
@@ -181,11 +175,6 @@ export class GameScene extends Component {
     private onTestSignal(event: ISignal) {
         console.log("onTestSignal");
         event.CallBack();
-    }
-
-    //todo: 將所有按鈕組裝在ButtonComponent 接著如同下方給取用者將按鈕組件設定給ButtonMediator
-    public get SpinButton(): Node {
-        return this.spinButton;
     }
 
     public get GetReelControl(): ReelControl {

@@ -49,7 +49,6 @@ export class EliminateScoreComponent extends Component {
 
         AddSignal(SignalType.ShowEliminateScore, this.onShowEliminateScore.bind(this));
         AddSignal(SignalType.CloseEliminateScore, this.onCloseEliminateScore.bind(this));
-        AddSignal(SignalType.AdditionEliminateScore, this.onAdditionEliminateScore.bind(this));
         AddSignal(SignalType.EliminateScoreMoveLeft, this.onEliminateScoreMoveLeft.bind(this));
         AddSignal(SignalType.RunEliminateScore, this.onRunEliminateScore.bind(this));
         AddSignal(SignalType.RunEliminateScoreFGState, this.onRunEliminateScoreFGState.bind(this));
@@ -95,20 +94,6 @@ export class EliminateScoreComponent extends Component {
 
     private onCloseEliminateScore(event: ISignal) {
         this.node.active = false;
-        event.CallBack();
-    }
-
-    private onAdditionEliminateScore(event: ISignal) {
-        /* let scoreLabel = this.score.getComponent(Label).string;
-        if (scoreLabel != "") {
-            let originScore = Number(scoreLabel);
-            let currentScore = this._removeSymbolRule.score;
-            let finalSocre = originScore + currentScore;
-            this.score.getComponent(Label).string = Number(finalSocre).toFixed(2).toString();
-        } else {
-            this.score.getComponent(Label).string = Number(this._removeSymbolRule.score).toFixed(2).toString();
-        } */
-
         event.CallBack();
     }
 

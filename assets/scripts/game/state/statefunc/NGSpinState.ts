@@ -45,11 +45,10 @@ export class NGSpinState extends StateBase {
         if (slotProxy.hasMultipInfoBeforeRemove) {
             console.log("播放呂布動畫以及執行SPIN_IN");
             this.event.facade.sendNotification("LUBU_FIRE");
-            // todo: 執行SET_MULTIPLE_TXT
-            this.event.facade.sendNotification("SET_MULTIPLE_TEXT", spinReelData.multipleInfo); //todo: 之後的消除階段有出現倍數 也要更新倍數文字
+            this.event.facade.sendNotification("SET_MULTIPLE_TEXT", spinReelData.multipleInfo);
             const Result = await slotProxy.getSpinUpdateReelData();
             this.event.facade.sendNotification("SPIN_IN", Result);
-            //todo: 播放火焰動畫 指定到正確的symbol位置
+            //播放火焰動畫，指定到正確的symbol位置
             this.event.facade.sendNotification("FIRE_BALL", spinReelData.multipleInfo.pos);
         } else {
             console.log("僅執行SPIN_IN");
